@@ -178,7 +178,7 @@ if (isset($_POST['form1'])) {
         unset($_POST['cust_city']);
         unset($_POST['cust_state']);
         unset($_POST['cust_zip']);
-
+        $success_message = '<p style="color:green;">Your registration is successful. You can now login to our website.</p><p><a href="login.php" style="color:#167ac6;font-weight:bold;">Click here to login</a></p>';     
         // $success_message = LANG_VALUE_152;
     }
 }
@@ -208,9 +208,10 @@ if (isset($_POST['form1'])) {
                                 if($error_message != '') {
                                     echo "<div class='error' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$error_message."</div>";
                                 }
-                                if($success_message != '') {
-                                    echo "<div class='success' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$success_message."</div>";
-                                }
+                                // if($success_message != '') {
+                                //     echo "<div class='success' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$success_message."</div>";
+                                // }
+                                echo $success_message;
                                 ?>
 
                                 <div class="col-md-6 form-group">
