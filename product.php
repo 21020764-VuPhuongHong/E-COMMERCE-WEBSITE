@@ -117,7 +117,10 @@ if($tot_rating == 0) {
 }
 
 if(isset($_POST['form_add_to_cart'])) {
-
+    if(!isset($_SESSION['customer'])) {
+        header('location: login.php');
+        exit;
+    }
 	// getting the currect stock of this product
 	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));

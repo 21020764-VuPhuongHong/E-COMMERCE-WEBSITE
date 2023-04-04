@@ -1,5 +1,5 @@
 <?php require_once('header.php'); ?>
-//fetching row banner login
+
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
@@ -8,7 +8,7 @@ foreach ($result as $row) {
     $banner_login = $row['banner_login'];
 }
 ?>
-//login form
+
 <?php
 if(isset($_POST['form1'])) {
         
@@ -39,7 +39,8 @@ if(isset($_POST['form1'])) {
                     $error_message .= LANG_VALUE_148.'<br>';
                 } else {
                     $_SESSION['customer'] = $row;
-                    header("location: ".BASE_URL."dashboard.php");
+                    header("location: index.php");
+                    //header("location: ".BASE_URL."dashboard.php");
                 }
             }
             
@@ -86,7 +87,7 @@ if(isset($_POST['form1'])) {
                                     <label for=""></label>
                                     <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_4; ?>" name="form1">
                                 </div>
-                                <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?></a>
+                                <!-- <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?></a> -->
                             </div>
                         </div>                        
                     </form>
