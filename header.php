@@ -349,7 +349,7 @@ foreach ($result as $row) {
 				<div class="menu-container">
 					<div class="menu">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="index.php">Trang chủ</a></li>
 							
 							<?php
 							$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
