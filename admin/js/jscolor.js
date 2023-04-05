@@ -1,4 +1,4 @@
-/**
+/**drop
  * jscolor - JavaScript Color Picker
  *
  * @link    http://jscolor.com

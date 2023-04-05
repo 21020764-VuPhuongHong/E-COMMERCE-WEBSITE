@@ -226,9 +226,9 @@ foreach ($result as $row) {
 		<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
 	<?php endif; ?>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
 
-	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
+	<!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script> -->
 
 <?php echo $before_head; ?>
 
@@ -248,15 +248,15 @@ foreach ($result as $row) {
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="left">
 					<ul>
-						<li><i class="fa fa-phone"></i> <?php echo $contact_phone; ?></li>
-						<li><i class="fa fa-envelope-o"></i> <?php echo $contact_email; ?></li>
+						<!-- <li><i class="fa fa-phone"></i> <?php echo $contact_phone; ?></li> -->
+						<!-- <li><i class="fa fa-envelope-o"></i> <?php echo $contact_email; ?></li> -->
 					</ul>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="right">
 					<ul>
-						<?php
+						<!-- <?php
 						$statement = $pdo->prepare("SELECT * FROM tbl_social");
 						$statement->execute();
 						$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -267,7 +267,7 @@ foreach ($result as $row) {
 							<?php endif; ?>
 							<?php
 						}
-						?>
+						?> -->
 					</ul>
 				</div>
 			</div>
@@ -290,7 +290,32 @@ foreach ($result as $row) {
 					if(isset($_SESSION['customer'])) {
 						?>
 						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
+						
 						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
+						
+						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_19; ?> (<?php echo LANG_VALUE_1; ?><?php
+							if(isset($_SESSION['cart_p_id'])) {
+								$table_total_price = 0;
+								$i=0;
+								foreach($_SESSION['cart_p_qty'] as $key => $value) 
+								{
+									$i++;
+									$arr_cart_p_qty[$i] = $value;
+								}                    $i=0;
+								foreach($_SESSION['cart_p_current_price'] as $key => $value) 
+								{
+									$i++;
+									$arr_cart_p_current_price[$i] = $value;
+								}
+								for($i=1;$i<=count($arr_cart_p_qty);$i++) {
+									$row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
+									$table_total_price = $table_total_price + $row_total_price;
+								}
+								echo $table_total_price;
+							} else {
+								echo '0.00';
+							}
+					?>)</a></li>
 						<?php
 					} else {
 						?>
@@ -299,32 +324,11 @@ foreach ($result as $row) {
 						<?php	
 					}
 					?>
-
-					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_19; ?> (<?php echo LANG_VALUE_1; ?><?php
-					if(isset($_SESSION['cart_p_id'])) {
-						$table_total_price = 0;
-						$i=0;
-	                    foreach($_SESSION['cart_p_qty'] as $key => $value) 
-	                    {
-	                        $i++;
-	                        $arr_cart_p_qty[$i] = $value;
-	                    }                    $i=0;
-	                    foreach($_SESSION['cart_p_current_price'] as $key => $value) 
-	                    {
-	                        $i++;
-	                        $arr_cart_p_current_price[$i] = $value;
-	                    }
-	                    for($i=1;$i<=count($arr_cart_p_qty);$i++) {
-	                    	$row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
-	                        $table_total_price = $table_total_price + $row_total_price;
-	                    }
-						echo $table_total_price;
-					} else {
-						echo '0.00';
-					}
-					?>)</a></li>
 				</ul>
 			</div>
+
+			
+
 			<div class="col-md-3 search-area">
 				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
 					<?php $csrf->echoInputField(); ?>
@@ -354,7 +358,7 @@ foreach ($result as $row) {
 							foreach ($result as $row) {
 								?>
 								<li><a href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
-									<ul>
+									<!-- <ul>
 										<?php
 										$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE tcat_id=?");
 										$statement1->execute(array($row['tcat_id']));
@@ -378,7 +382,7 @@ foreach ($result as $row) {
 											<?php
 										}
 										?>
-									</ul>
+									</ul> -->
 								</li>
 								<?php
 							}
@@ -399,9 +403,9 @@ foreach ($result as $row) {
 							?>
 
 							<li><a href="about.php"><?php echo $about_title; ?></a></li>
-							<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
+							<!-- <li><a href="faq.php"><?php echo $faq_title; ?></a></li>
 
-							<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
+							<li><a href="contact.php"><?php echo $contact_title; ?></a></li> -->
 						</ul>
 					</div>
 				</div>

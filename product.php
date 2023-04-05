@@ -117,7 +117,10 @@ if($tot_rating == 0) {
 }
 
 if(isset($_POST['form_add_to_cart'])) {
-
+    if(!isset($_SESSION['customer'])) {
+        header('location: login.php');
+        exit;
+    }
 	// getting the currect stock of this product
 	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
@@ -172,14 +175,17 @@ if(isset($_POST['form_add_to_cart'])) {
         } else {
             $color_id = $_POST['color_id'];
         }
+        $old_p_id = 0;
         for($i=1;$i<=count($arr_cart_p_id);$i++) {
             if( ($arr_cart_p_id[$i]==$_REQUEST['id']) && ($arr_cart_size_id[$i]==$size_id) && ($arr_cart_color_id[$i]==$color_id) ) {
                 $added = 1;
+                $old_p_id = $i;
                 break;
             }
         }
         if($added == 1) {
-           $error_message1 = 'This product is already added to the shopping cart.';
+            $_SESSION['cart_p_qty'][$old_p_id] = $_POST['p_qty'] + $_SESSION['cart_p_qty'][$old_p_id];
+        //    $error_message1 = 'This product is already added to the shopping cart.';
         } else {
 
             $i=0;

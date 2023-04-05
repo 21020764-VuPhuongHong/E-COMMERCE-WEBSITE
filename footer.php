@@ -12,7 +12,7 @@ foreach ($result as $row)
 	$total_recent_post_footer = $row['total_recent_post_footer'];
     $total_popular_post_footer = $row['total_popular_post_footer'];
     $newsletter_on_off = $row['newsletter_on_off'];
-    $before_body = $row['before_body'];
+    // $before_body = $row['before_body'];
 }
 ?>
 
@@ -100,12 +100,36 @@ This link will be active only for 24 hours.
 				echo "<script>alert('".$success_message1."')</script>";
 			}
 			?>
-				
+				<!-- <form action="" method="post">
+					<?php $csrf->echoInputField(); ?>
+					<h2><?php echo LANG_VALUE_93; ?></h2>
+					<div class="input-group">
+			        	<input type="email" class="form-control" placeholder="<?php echo LANG_VALUE_95; ?>" name="email_subscribe">
+			         	<span class="input-group-btn">
+			         	<button class="btn btn-theme" type="submit" name="form_subscribe"><?php echo LANG_VALUE_92; ?></button>
+			         	</span>
+			        </div>
+				</div>
+				</form> -->
 			</div>
 		</div>
 	</div>
 </section>
 <?php endif; ?>
+
+
+
+
+<div class="footer-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 copyright">
+				<!-- <?php echo $footer_copyright; ?> -->
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <a href="#" class="scrollup">
 	<i class="fa fa-angle-up"></i>
@@ -196,6 +220,6 @@ foreach ($result as $row) {
         }
     }
 </script>
-<?php echo $before_body; ?>
+<!-- <?php echo $before_body; ?> -->
 </body>
 </html>
