@@ -66,10 +66,10 @@ if(isset($_POST['form1'])) {
 
 <div class="login-box">
 	<div class="login-logo">
-		<b>Admin Panel</b>
+		<b>Admin</b>
 	</div>
   	<div class="login-box-body">
-    	<p class="login-box-msg">Log in to start your session</p>
+    	<p class="login-box-msg">Đăng nhập</p>
     
 	    <?php 
 	    if( (isset($error_message)) && ($error_message!='') ):
@@ -80,15 +80,15 @@ if(isset($_POST['form1'])) {
 		<form action="" method="post">
 			<?php $csrf->echoInputField(); ?>
 			<div class="form-group has-feedback">
-				<input class="form-control" placeholder="Email address" name="email" type="email" autocomplete="off" autofocus>
+				<input class="form-control" placeholder="Email" name="email" type="email" autocomplete="off" autofocus>
 			</div>
 			<div class="form-group has-feedback">
-				<input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" value="">
+				<input class="form-control" placeholder="Mật khẩu" name="password" type="password" autocomplete="off" value="">
 			</div>
 			<div class="row">
 				<div class="col-xs-8"></div>
 				<div class="col-xs-4">
-					<input type="submit" class="btn btn-primary btn-block btn-flat login-button" name="form1" value="Log In">
+					<input type="submit" class="btn btn-primary btn-block btn-flat login-button" name="form1" value="Đăng nhập">
 				</div>
 			</div>
 		</form>

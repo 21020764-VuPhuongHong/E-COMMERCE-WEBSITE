@@ -55,10 +55,10 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Top Level Category</h1>
+		<h1>Sửa danh mục</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="top-category.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="top-category.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -97,24 +97,24 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Top Category Name <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Tên danh mục <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="tcat_name" value="<?php echo $tcat_name; ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Show on Menu? <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Hiển thị trên menu <span>*</span></label>
                     <div class="col-sm-4">
                         <select name="show_on_menu" class="form-control" style="width:auto;">
-                            <option value="0" <?php if($show_on_menu == 0) {echo 'selected';} ?>>No</option>
-                            <option value="1" <?php if($show_on_menu == 1) {echo 'selected';} ?>>Yes</option>
+                            <option value="0" <?php if($show_on_menu == 0) {echo 'selected';} ?>>Không</option>
+                            <option value="1" <?php if($show_on_menu == 1) {echo 'selected';} ?>>Có</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                 	<label for="" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-success pull-left" name="form1">Update</button>
+                      <button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật</button>
                     </div>
                 </div>
 
@@ -134,16 +134,12 @@ foreach ($result as $row) {
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-            </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+                 Bạn có chắc chắn muốn xóa mục này?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

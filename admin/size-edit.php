@@ -58,7 +58,7 @@ if(!isset($_REQUEST['id'])) {
 		<h1>Edit Size</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="size.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="size.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -96,7 +96,7 @@ foreach ($result as $row) {
 
             <div class="box-body">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Size Name <span>*</span></label>
+                    <label for="" class="col-sm-2 control-label">Size <span>*</span></label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="size_name" value="<?php echo $size_name; ?>">
                     </div>
@@ -104,7 +104,7 @@ foreach ($result as $row) {
                 <div class="form-group">
                 	<label for="" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-success pull-left" name="form1">Update</button>
+                      <button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật</button>
                     </div>
                 </div>
 

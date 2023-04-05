@@ -123,7 +123,7 @@ if($success_message != '') {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Orders</h1>
+		<h1>Đơn hàng</h1>
 	</div>
 </section>
 
@@ -138,20 +138,16 @@ if($success_message != '') {
         
         <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-striped">
-			<thead>
-			    <tr>
-			        <th>SL</th>
-                    <th>Customer Details</th>
-			        <th>Product Details</th>
-                    <th>
-                    	Payment Information
-                    </th>
-                    <th>Paid Amount</th>
-                    <th>Payment Status</th>
-                    <th>Shipping Status</th>
-			        <th>Action</th>
-			    </tr>
-			</thead>
+            <tr>
+                <th>STT</th>
+                <th>Chi tiết khách hàng</th>
+                <th>Thông tin chi tiết sản phẩm</th>
+                <th>Thông tin thanh toán</th>
+                <th>Số tiền thanh toán</th>
+                <th>Tình trạng thanh toán</th>
+                <th>Tình trạng giao hàng</th>
+                <th>Thay đổi</th>
+            </tr>
             <tbody>
             	<?php
             	$i=0;
@@ -165,46 +161,8 @@ if($success_message != '') {
 	                    <td><?php echo $i; ?></td>
 	                    <td>
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
-                            <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
+                            <b>Họ tên:</b><br> <?php echo $row['customer_name']; ?><br>
                             <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
-                            <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
-                            <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title" style="font-weight: bold;">Send Message</h4>
-										</div>
-										<div class="modal-body" style="font-size: 14px">
-											<form action="" method="post">
-                                                <input type="hidden" name="cust_id" value="<?php echo $row['customer_id']; ?>">
-                                                <input type="hidden" name="payment_id" value="<?php echo $row['payment_id']; ?>">
-												<table class="table table-bordered">
-													<tr>
-														<td>Subject</td>
-														<td>
-                                                            <input type="text" name="subject_text" class="form-control" style="width: 100%;">
-														</td>
-													</tr>
-                                                    <tr>
-                                                        <td>Message</td>
-                                                        <td>
-                                                            <textarea name="message_text" class="form-control" cols="30" rows="10" style="width:100%;height: 200px;"></textarea>
-                                                        </td>
-                                                    </tr>
-													<tr>
-														<td></td>
-														<td><input type="submit" value="Send Message" name="form1"></td>
-													</tr>
-												</table>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-								</div>
-							</div>
                         </td>
                         <td>
                            <?php
@@ -212,26 +170,22 @@ if($success_message != '') {
                            $statement1->execute(array($row['payment_id']));
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
-                                echo '<b>Product Name:</b> '.$row1['product_name'];
+                                echo '<b>Tên sản phẩm:</b> '.$row1['product_name'];
                                 echo '<br>(<b>Size:</b> '.$row1['size'];
-                                echo ', <b>Color:</b> '.$row1['color'].')';
-                                echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
-                                echo ', <b>Unit Price:</b> '.$row1['unit_price'].')';
+                                echo ', <b>Màu:</b> '.$row1['color'].')';
+                                echo '<br>(<b>Số lượng:</b> '.$row1['quantity'];
+                                echo ', <b>Đơn giá:</b> '.$row1['unit_price'].')';
                                 echo '<br><br>';
                            }
                            ?>
                         </td>
                         <td>
                         	<?php if($row['payment_method'] == 'PayPal'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-                        		<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
+                        		<b>Phương thức thanh toán:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                        		<b>Ngày thanh toán:</b> <?php echo $row['payment_date']; ?><br>
                         	<?php elseif($row['payment_method'] == 'Stripe'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-								<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
+                        		<b>Phương thức thanh toán:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+								<b>Ngày thanh toán::</b> <?php echo $row['payment_date']; ?><br>
                         		<b>Card Number:</b> <?php echo $row['card_number']; ?><br>
                         		<b>Card CVV:</b> <?php echo $row['card_cvv']; ?><br>
                         		<b>Expire Month:</b> <?php echo $row['card_month']; ?><br>
@@ -269,7 +223,7 @@ if($success_message != '') {
                             ?>
                         </td>
 	                    <td>
-                            <a href="#" class="btn btn-danger btn-xs" data-href="order-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete" style="width:100%;">Delete</a>
+                            <a href="#" class="btn btn-danger btn-xs" data-href="order-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete" style="width:100%;">Xóa</a>
 	                    </td>
 	                </tr>
             		<?php
@@ -287,16 +241,12 @@ if($success_message != '') {
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-            </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+                Bạn có chắc chắn muốn xóa mục này?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

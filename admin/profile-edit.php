@@ -128,7 +128,7 @@ if(isset($_POST['form3'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Profile</h1>
+		<h1>Chỉnh sửa hồ sơ</h1>
 	</div>
 </section>
 
@@ -155,9 +155,9 @@ foreach ($result as $row) {
 				
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab_1" data-toggle="tab">Update Information</a></li>
-						<li><a href="#tab_2" data-toggle="tab">Update Photo</a></li>
-						<li><a href="#tab_3" data-toggle="tab">Update Password</a></li>
+						<li class="active"><a href="#tab_1" data-toggle="tab">Cập nhật thông tin</a></li>
+						<li><a href="#tab_2" data-toggle="tab">Cập nhập ảnh đại diện</a></li>
+						<li><a href="#tab_3" data-toggle="tab">Cập nhật mật khẩu</a></li>
 					</ul>
 					<div class="tab-content">
           				<div class="tab-pane active" id="tab_1">
@@ -166,7 +166,7 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Name <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Họ tên <span>*</span></label>
 										<?php
 										if($_SESSION['user']['role'] == 'Super Admin') {
 											?>
@@ -185,14 +185,14 @@ foreach ($result as $row) {
 										
 									</div>
 									<div class="form-group">
-							            <label for="" class="col-sm-2 control-label">Existing Photo</label>
+							            <label for="" class="col-sm-2 control-label">Ảnh đại diện</label>
 							            <div class="col-sm-6" style="padding-top:6px;">
 							                <img src="../assets/uploads/<?php echo $photo; ?>" class="existing-photo" width="140">
 							            </div>
 							        </div>
 									
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Email Address <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Email <span>*</span></label>
 										<?php
 										if($_SESSION['user']['role'] == 'Super Admin') {
 											?>
@@ -211,13 +211,13 @@ foreach ($result as $row) {
 										
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Phone </label>
+										<label for="" class="col-sm-2 control-label">SĐT </label>
 										<div class="col-sm-4">
 											<input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Role <span>*</span></label>
+										<label for="" class="col-sm-2 control-label">Vai trò <span>*</span></label>
 										<div class="col-sm-4" style="padding-top:7px;">
 											<?php echo $role; ?>
 										</div>
@@ -225,7 +225,7 @@ foreach ($result as $row) {
 									<div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form1">Update Information</button>
+											<button type="submit" class="btn btn-success pull-left" name="form1">Cập nhật thông tin</button>
 										</div>
 									</div>
 								</div>
@@ -237,7 +237,7 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-							            <label for="" class="col-sm-2 control-label">New Photo</label>
+							            <label for="" class="col-sm-2 control-label">Hình ảnh mới</label>
 							            <div class="col-sm-6" style="padding-top:6px;">
 							                <input type="file" name="photo">
 							            </div>
@@ -245,7 +245,7 @@ foreach ($result as $row) {
 							        <div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form2">Update Photo</button>
+											<button type="submit" class="btn btn-success pull-left" name="form2">Cập nhật</button>
 										</div>
 									</div>
 								</div>
@@ -257,13 +257,13 @@ foreach ($result as $row) {
 							<div class="box box-info">
 								<div class="box-body">
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Password </label>
+										<label for="" class="col-sm-2 control-label">Mật khẩu </label>
 										<div class="col-sm-4">
 											<input type="password" class="form-control" name="password">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-2 control-label">Retype Password </label>
+										<label for="" class="col-sm-2 control-label">Nhập lại mật khẩu </label>
 										<div class="col-sm-4">
 											<input type="password" class="form-control" name="re_password">
 										</div>
@@ -271,7 +271,7 @@ foreach ($result as $row) {
 							        <div class="form-group">
 										<label for="" class="col-sm-2 control-label"></label>
 										<div class="col-sm-6">
-											<button type="submit" class="btn btn-success pull-left" name="form3">Update Password</button>
+											<button type="submit" class="btn btn-success pull-left" name="form3">Cập nhật</button>
 										</div>
 									</div>
 								</div>

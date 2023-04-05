@@ -15,7 +15,7 @@ if(isset($_POST['form1'])) {
     	if($total)
     	{
     		$valid = 0;
-        	$error_message .= "Color Name already exists<br>";
+        	$error_message .= "Màu này đã tồn tại!<br>";
     	}
     }
 
@@ -32,10 +32,10 @@ if(isset($_POST['form1'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Add Color</h1>
+		<h1>Thêm màu</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="color.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="color.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -66,7 +66,7 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Color Name <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Màu <span>*</span></label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="color_name">
 							</div>
@@ -74,7 +74,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Hoàn thành</button>
 							</div>
 						</div>
 					</div>

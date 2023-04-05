@@ -35,7 +35,7 @@ if(isset($_POST['form1'])) {
 		<h1>Add Size</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="size.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="size.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -74,7 +74,7 @@ if(isset($_POST['form1'])) {
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Cập nhập</button>
 							</div>
 						</div>
 					</div>

@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Sliders</h1>
+		<h1>Thanh trượt</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="slider-add.php" class="btn btn-primary btn-sm">Add Slider</a>
+		<a href="slider-add.php" class="btn btn-primary btn-sm">Thêm</a>
 	</div>
 </section>
 
@@ -15,18 +15,16 @@
 			<div class="box box-info">
 				<div class="box-body table-responsive">
 					<table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>SL</th>
-								<th>Photo</th>
-								<th>Heading</th>
-								<th>Content</th>
-								<th>Button Text</th>
-								<th>Button URL</th>
-								<th>Position</th>
-								<th width="140">Action</th>
-							</tr>
-						</thead>
+						<tr>
+							<th>STT</th>
+							<th>Hình ảnh</th>
+							<th>Tiêu đề</th>
+							<th>Nội dung</th>
+							<th>Button Text</th>
+							<th>Button URL</th>
+							<th>Position</th>
+							<th width="140">Action</th>
+						</tr>
 						<tbody>
 							<?php
 							$i=0;
