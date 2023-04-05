@@ -146,6 +146,12 @@ if(!isset($_SESSION['user'])) {
 			          </a>
 			        </li>
 
+					<li class="treeview <?php if( ($cur_page == 'service.php') ) {echo 'active';} ?>">
+			          <a href="service.php">
+			            <i class="fa fa-hand-o-right"></i> <span>Dịch vụ</span>
+			          </a>
+			        </li>
+
 
       			</ul>
     		</section>

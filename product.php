@@ -30,35 +30,20 @@ foreach($result as $row) {
     $p_total_view = $row['p_total_view'];
     $p_is_featured = $row['p_is_featured'];
     $p_is_active = $row['p_is_active'];
-    $ecat_id = $row['ecat_id'];
+    $ecat_id = $row['tcat_id'];
 }
 
 // Getting all categories name for breadcrumb
 $statement = $pdo->prepare("SELECT
-                        t1.ecat_id,
-                        t1.ecat_name,
-                        t1.mcat_id,
+                        t1.tcat_id,
+                        t1.tcat_name
 
-                        t2.mcat_id,
-                        t2.mcat_name,
-                        t2.tcat_id,
-
-                        t3.tcat_id,
-                        t3.tcat_name
-
-                        FROM tbl_end_category t1
-                        JOIN tbl_mid_category t2
-                        ON t1.mcat_id = t2.mcat_id
-                        JOIN tbl_top_category t3
-                        ON t2.tcat_id = t3.tcat_id
-                        WHERE t1.ecat_id=?");
+                        FROM  tbl_top_category t1
+                        WHERE t1.tcat_id=?");
 $statement->execute(array($ecat_id));
 $total = $statement->rowCount();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
-    $ecat_name = $row['ecat_name'];
-    $mcat_id = $row['mcat_id'];
-    $mcat_name = $row['mcat_name'];
     $tcat_id = $row['tcat_id'];
     $tcat_name = $row['tcat_name'];
 }
@@ -304,13 +289,7 @@ if($success_message1 != '') {
                 <div class="breadcrumb mb_30">
                     <ul>
                         <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
-                        <li>></li>
                         <li><a href="<?php echo BASE_URL.'product-category.php?id='.$tcat_id.'&type=top-category' ?>"><?php echo $tcat_name; ?></a></li>
-                        <li>></li>
-                        <li><a href="<?php echo BASE_URL.'product-category.php?id='.$mcat_id.'&type=mid-category' ?>"><?php echo $mcat_name; ?></a></li>
-                        <li>></li>
-                        <li><a href="<?php echo BASE_URL.'product-category.php?id='.$ecat_id.'&type=end-category' ?>"><?php echo $ecat_name; ?></a></li>
-                        <li>></li>
                         <li><?php echo $p_name; ?></li>
                     </ul>
                 </div>
