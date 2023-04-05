@@ -96,7 +96,8 @@ if (isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <h3>
-                        <?php echo LANG_VALUE_117; ?>
+                        <!-- <?php echo LANG_VALUE_117; ?> -->
+                        Cập nhật thông tin
                     </h3>
                     <?php
                     if($error_message != '') {
@@ -110,27 +111,27 @@ if (isset($_POST['form1'])) {
                         <?php $csrf->echoInputField(); ?>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_102; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_102; ?>-->Họ và tên *</label>
                                 <input type="text" class="form-control" name="cust_name" value="<?php echo $_SESSION['customer']['cust_name']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_103; ?></label>
+                                <label for=""><!--<?php echo LANG_VALUE_103; ?>-->Tên công ty</label>
                                 <input type="text" class="form-control" name="cust_cname" value="<?php echo $_SESSION['customer']['cust_cname']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_94; ?> -->Email *</label>
                                 <input type="text" class="form-control" name="" value="<?php echo $_SESSION['customer']['cust_email']; ?>" disabled>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_104; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_104; ?>-->Số điện thoại *</label>
                                 <input type="text" class="form-control" name="cust_phone" value="<?php echo $_SESSION['customer']['cust_phone']; ?>">
                             </div>
                             <div class="col-md-12 form-group">
-                                <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_105; ?>-->Địa chỉ *</label>
                                 <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php echo $_SESSION['customer']['cust_address']; ?></textarea>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_106; ?> *</label>
+                                <label for=""><?php echo LANG_VALUE_106; ?>Quốc gia *</label>
                                 <select name="cust_country" class="form-control">
                                 <?php
                                 $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
@@ -146,19 +147,20 @@ if (isset($_POST['form1'])) {
                             </div>
                             
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_107; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_107; ?>-->Thành phố *</label>
                                 <input type="text" class="form-control" name="cust_city" value="<?php echo $_SESSION['customer']['cust_city']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_108; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_108; ?>-->Quận *</label>
                                 <input type="text" class="form-control" name="cust_state" value="<?php echo $_SESSION['customer']['cust_state']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_109; ?> *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_109; ?>-->Mã zip *</label>
                                 <input type="text" class="form-control" name="cust_zip" value="<?php echo $_SESSION['customer']['cust_zip']; ?>">
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
+                        <!-- <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1"> -->
+                        <input type="submit" class="btn btn-primary" value="Cập nhật" name="form1">
                     </form>
                 </div>                
             </div>
