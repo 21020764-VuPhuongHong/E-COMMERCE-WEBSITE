@@ -25,19 +25,19 @@ if(!isset($_SESSION['customer'])) {
             </div>
             <div class="col-md-12">
                 <div class="user-content">
-                    <h3><?php echo LANG_VALUE_25; ?></h3>
+                    <h3><!--<?php echo LANG_VALUE_25; ?>-->Lịch sử đơn hàng</h3>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th><?php echo LANG_VALUE_7; ?></th>
-                                    <th><?php echo LANG_VALUE_48; ?></th>
-                                    <th><?php echo LANG_VALUE_27; ?></th>
-                                    <th><?php echo LANG_VALUE_28; ?></th>
-                                    <th><?php echo LANG_VALUE_29; ?></th>
-                                    <th><?php echo LANG_VALUE_30; ?></th>
-                                    <th><?php echo LANG_VALUE_31; ?></th>
-                                    <th><?php echo LANG_VALUE_32; ?></th>
+                                    <th><!--<?php echo LANG_VALUE_7; ?>-->Số thứ tự</th>
+                                    <th><!--<?php echo LANG_VALUE_48; ?>-->Chi tiết đơn hàng</th>
+                                    <th><!--<?php echo LANG_VALUE_27; ?>-->Thời gian thanh toán</th>
+                                    <th><!--<?php echo LANG_VALUE_28; ?>-->Mã giao dịch</th>
+                                    <th><!--<?php echo LANG_VALUE_29; ?>-->Tiền phải trả</th>
+                                    <th><!--<?php echo LANG_VALUE_30; ?>-->Trạng thái</th>
+                                    <th><!--<?php echo LANG_VALUE_31; ?>-->Phương thức thanh toán</th>
+                                    <th><!--<?php echo LANG_VALUE_32; ?>-->Mã thanh toán</th>
                                 </tr>
                             </thead>
                             <tbody>
