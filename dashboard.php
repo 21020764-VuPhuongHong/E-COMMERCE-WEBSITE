@@ -26,7 +26,8 @@ if(!isset($_SESSION['customer'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <h3 class="text-center">
-                        <?php echo LANG_VALUE_90; ?>
+                        <!-- <?php echo LANG_VALUE_90; ?> -->
+                        Chào mừng đến Nhà của tôi
                     </h3>
                 </div>                
             </div>
