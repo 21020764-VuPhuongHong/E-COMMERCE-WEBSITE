@@ -17,7 +17,7 @@ $dbuser = 'root';
 // Database Password
 $dbpass = '';
 
-$dbport = 3306;
+$dbport = 3307;
 
 // Defining base url
 define("BASE_URL", "http://fashionys.com/");
