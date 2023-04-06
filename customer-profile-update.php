@@ -131,7 +131,7 @@ if (isset($_POST['form1'])) {
                                 <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php echo $_SESSION['customer']['cust_address']; ?></textarea>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_106; ?>Quốc gia *</label>
+                                <label for=""><!--<?php echo LANG_VALUE_106; ?>-->Quốc gia *</label>
                                 <select name="cust_country" class="form-control">
                                 <?php
                                 $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
