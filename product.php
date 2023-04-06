@@ -188,7 +188,9 @@ if($success_message1 != '') {
                 <div class="breadcrumb mb_30">
                     <ul>
                         <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li>></li>
                         <li><a href="<?php echo BASE_URL.'product-category.php?id='.$tcat_id.'&type=top-category' ?>"><?php echo $tcat_name; ?></a></li>
+                        <li>></li>
                         <li><?php echo $p_name; ?></li>
                     </ul>
                 </div>
