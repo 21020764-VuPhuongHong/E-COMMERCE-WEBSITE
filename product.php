@@ -30,7 +30,7 @@ foreach($result as $row) {
     $p_total_view = $row['p_total_view'];
     $p_is_featured = $row['p_is_featured'];
     $p_is_active = $row['p_is_active'];
-    $ecat_id = $row['tcat_id'];
+    $tcat_id = $row['tcat_id'];
 }
 
 // Getting all categories name for breadcrumb
@@ -40,7 +40,7 @@ $statement = $pdo->prepare("SELECT
 
                         FROM  tbl_top_category t1
                         WHERE t1.tcat_id=?");
-$statement->execute(array($ecat_id));
+$statement->execute(array($tcat_id));
 $total = $statement->rowCount();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -289,7 +289,9 @@ if($success_message1 != '') {
                 <div class="breadcrumb mb_30">
                     <ul>
                         <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li>></li>
                         <li><a href="<?php echo BASE_URL.'product-category.php?id='.$tcat_id.'&type=top-category' ?>"><?php echo $tcat_name; ?></a></li>
+                        <li>></li>
                         <li><?php echo $p_name; ?></li>
                     </ul>
                 </div>
@@ -653,8 +655,8 @@ if($success_message1 != '') {
                 <div class="product-carousel">
 
                     <?php
-                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE ecat_id=? AND p_id!=?");
-                    $statement->execute(array($ecat_id,$_REQUEST['id']));
+                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE tcat_id=? AND p_id!=?");
+                    $statement->execute(array($tcat_id,$_REQUEST['id']));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($result as $row) {
                         ?>
