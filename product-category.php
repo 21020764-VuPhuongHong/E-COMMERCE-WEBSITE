@@ -42,9 +42,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                         break;
                     }
                 }
-                $arr1 = array();
-                $arr2 = array();
-                
+                $final_tcat_ids = array($_REQUEST['id']);
             }   
         
     } 

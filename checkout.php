@@ -47,92 +47,45 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
                         </tr>
-                         <?php
-                        $table_total_price = 0;
+                        <tbody>
+							<?php
+							$i=0;
+							$statement = $pdo->prepare("SELECT                           
+                                                        t1.p_id,
+                                                        t1.p_name,
+                                                        t1.p_current_price,
+                                                        t1.p_qty,
+                                                        t1.p_featured_photo,
+                                                        t2.c_id,
+                                                        t2.p_quantity,
+                                                        t2.size,
+                                                        t2.color
 
-                        $i=0;
-                        foreach($_SESSION['cart_p_id'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_p_id[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_size_id'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_size_id[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_size_name'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_size_name[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_color_id'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_color_id[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_color_name'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_color_name[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_p_qty'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_p_qty[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_p_current_price'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_p_current_price[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_p_name'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_p_name[$i] = $value;
-                        }
-
-                        $i=0;
-                        foreach($_SESSION['cart_p_featured_photo'] as $key => $value) 
-                        {
-                            $i++;
-                            $arr_cart_p_featured_photo[$i] = $value;
-                        }
-                        ?>
-                        <?php for($i=1;$i<=count($arr_cart_p_id);$i++): ?>
-                        <tr>
-                            <td><?php echo $i; ?></td>
-                            <td>
-                                <img src="assets/uploads/<?php echo $arr_cart_p_featured_photo[$i]; ?>" alt="">
-                            </td>
-                            <td><?php echo $arr_cart_p_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_size_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
-                            <td><?php echo $arr_cart_p_qty[$i]; ?></td>
-                            <td class="text-right">
-                                <?php
-                                $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
-                                $table_total_price = $table_total_price + $row_total_price;
-                                ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
-                            </td>
-                        </tr>
-                        <?php endfor; ?>           
+                                                        FROM tbl_product t1
+                                                        INNER JOIN tbl_cart t2
+                                                        ON t1.p_id = t2.p_id
+                                                        ");
+                            $statement->execute();
+							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+                            $table_total_price = 0;
+							foreach ($result as $row) {
+								$i++;
+								?>
+								<tr>
+									<td><?php echo $i; ?></td>
+									<td style="width:130px;"><img src="assets/uploads/<?php echo $row['p_featured_photo']; ?>" alt="<?php echo $row['p_name']; ?>" style="width:100px;"></td>
+									<td><?php echo $row['p_name']; ?></td>
+									<td><?php echo $row['size']; ?></td>
+									<td><?php echo $row['color']; ?></td>
+									<td><?php echo $row['p_current_price']; ?></td>
+									<td><?php echo $row['p_qty']; ?></td>
+									<td class="text-right"><?php echo $row['p_qty'] * $row['p_current_price']; ?></td>
+								</tr>
+								<?php
+                                $table_total_price += $row['p_qty'] * $row['p_current_price'];
+							}
+							?>							
+						</tbody>          
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
                             <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
