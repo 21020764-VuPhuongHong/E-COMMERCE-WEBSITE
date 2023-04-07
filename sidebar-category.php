@@ -1,4 +1,4 @@
-<?php require_once('header.php'); ?>
+
 
     <div id="left" class="span3">
 
