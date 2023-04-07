@@ -59,7 +59,7 @@ if( !isset($_REQUEST['msg']) ) {
 		$statement = $pdo->prepare("SELECT t1.p_id, t1.size, t1.color, t1.p_quantity,  t2.p_name, t2.p_current_price, t2.p_qty
 									FROM tbl_cart t1
 									INNER JOIN tbl_product t2
-									ON t1.p_id = t1.p_id
+									ON t1.p_id = t2.p_id
 									WHERE cust_id = :cust_id");
 		$statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);
 		$statement->execute();
