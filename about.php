@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
+$statement = $pdo->prepare("SELECT about_title, about_content, about_banner FROM tbl_page WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {

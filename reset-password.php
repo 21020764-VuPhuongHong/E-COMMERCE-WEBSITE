@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT banner_reset_password FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -10,21 +10,21 @@ foreach ($result as $row) {
 ?>
 
 <?php
-if( !isset($_GET['email']) || !isset($_GET['token']) )
-{
-    header('location: '.BASE_URL.'login.php');
-    exit;
-}
+// if( !isset($_GET['email']) || !isset($_GET['token']) )
+// {
+//     header('location: '.BASE_URL.'login.php');
+//     exit;
+// }
 
-$statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=? AND cust_token=?");
+$statement = $pdo->prepare("SELECT cust_timestamp FROM tbl_customer WHERE cust_email=? AND cust_token=?");
 $statement->execute(array($_GET['email'],$_GET['token']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 $tot = $statement->rowCount();
-if($tot == 0)
-{
-    header('location: '.BASE_URL.'login.php');
-    exit;
-}
+// if($tot == 0)
+// {
+//     header('location: '.BASE_URL.'login.php');
+//     exit;
+// }
 foreach ($result as $row) {
     $saved_time = $row['cust_timestamp'];
 }

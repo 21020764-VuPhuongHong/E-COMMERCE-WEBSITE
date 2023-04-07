@@ -7,7 +7,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE tcat_id=?");
+	$statement = $pdo->prepare("SELECT tcat_id FROM tbl_top_category WHERE tcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	if( $total == 0 ) {
@@ -18,7 +18,7 @@ if(!isset($_REQUEST['id'])) {
 ?>
 
 <?php	
-	$statement = $pdo->prepare("SELECT * 
+	$statement = $pdo->prepare("SELECT ecat_id 
 							FROM tbl_top_category t1
 							JOIN tbl_mid_category t2
 							ON t1.tcat_id = t2.tcat_id
@@ -34,7 +34,7 @@ if(!isset($_REQUEST['id'])) {
 	if(isset($ecat_ids)) {
 
 		for($i=0;$i<count($ecat_ids);$i++) {
-			$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE ecat_id=?");
+			$statement = $pdo->prepare("SELECT p_id FROM tbl_product WHERE ecat_id=?");
 			$statement->execute(array($ecat_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result as $row) {
@@ -45,7 +45,7 @@ if(!isset($_REQUEST['id'])) {
 		for($i=0;$i<count($p_ids);$i++) {
 
 			// Getting photo ID to unlink from folder
-			$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+			$statement = $pdo->prepare("SELECT p_featured_photo FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result as $row) {
@@ -54,7 +54,7 @@ if(!isset($_REQUEST['id'])) {
 			}
 
 			// Getting other photo ID to unlink from folder
-			$statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
+			$statement = $pdo->prepare("SELECT photo FROM tbl_product_photo WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result as $row) {
@@ -83,7 +83,7 @@ if(!isset($_REQUEST['id'])) {
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_payment
-			$statement = $pdo->prepare("SELECT * FROM tbl_order WHERE product_id=?");
+			$statement = $pdo->prepare("SELECT payment_id FROM tbl_order WHERE product_id=?");
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result as $row) {

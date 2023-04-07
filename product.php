@@ -56,14 +56,14 @@ $statement = $pdo->prepare("UPDATE tbl_product SET p_total_view=? WHERE p_id=?")
 $statement->execute(array($p_total_view,$_REQUEST['id']));
 
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product_size WHERE p_id=?");
+$statement = $pdo->prepare("SELECT size_id FROM tbl_product_size WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
     $size[] = $row['size_id'];
 }
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product_color WHERE p_id=?");
+$statement = $pdo->prepare("SELECT color_id FROM tbl_product_color WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -73,7 +73,7 @@ foreach ($result as $row) {
 
 if(isset($_POST['form_review'])) {
     
-    $statement = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=? AND cust_id=?");
+    $statement = $pdo->prepare("SELECT p_id FROM tbl_rating WHERE p_id=? AND cust_id=?");
     $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id']));
     $total = $statement->rowCount();
     
@@ -89,7 +89,7 @@ if(isset($_POST['form_review'])) {
 
 // Getting the average rating for this product
 $t_rating = 0;
-$statement = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+$statement = $pdo->prepare("SELECT p_id FROM tbl_rating WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
 $tot_rating = $statement->rowCount();
 if($tot_rating == 0) {
@@ -114,7 +114,7 @@ if(isset($_POST['form_add_to_cart'])) {
         $size_name = '';
         $color_name = '';
 
-        $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=:id");
+        $statement = $pdo->prepare("SELECT size_name FROM tbl_size WHERE size_id=:id");
     $statement->bindParam(':id', $_POST['size_id']);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
@@ -122,7 +122,7 @@ if(isset($_POST['form_add_to_cart'])) {
             $size_name = $row['size_name'];
         }
 
-        $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=:id");
+        $statement = $pdo->prepare("SELECT color_name FROM tbl_color WHERE color_id=:id");
     $statement->bindParam(':id', $_POST['color_id']);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
@@ -187,16 +187,6 @@ if($success_message1 != '') {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-                <div class="breadcrumb mb_30">
-                    <ul>
-                        <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
-                        <li>></li>
-                        <li><a href="<?php echo BASE_URL.'product-category.php?id='.$tcat_id.'&type=top-category' ?>"><?php echo $tcat_name; ?></a></li>
-                        <li>></li>
-                        <li><?php echo $p_name; ?></li>
-                    </ul>
-                </div>
-
 				<div class="product">
 					<div class="row">
 						<div class="col-md-5">
@@ -206,7 +196,7 @@ if($success_message1 != '') {
                                     <a class="popup" href="assets/uploads/<?php echo $p_featured_photo; ?>"></a>
 								</li>
                                 <?php
-                                $statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
+                                $statement = $pdo->prepare("SELECT photo FROM tbl_product_photo WHERE p_id=?");
                                 $statement->execute(array($_REQUEST['id']));
                                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($result as $row) {
@@ -222,7 +212,7 @@ if($success_message1 != '') {
 								<a data-slide-index="0" href=""><div class="prod-pager-thumb" style="background-image: url(assets/uploads/<?php echo $p_featured_photo; ?>"></div></a>
                                 <?php
                                 $i=1;
-                                $statement = $pdo->prepare("SELECT * FROM tbl_product_photo WHERE p_id=?");
+                                $statement = $pdo->prepare("SELECT photo FROM tbl_product_photo WHERE p_id=?");
                                 $statement->execute(array($_REQUEST['id']));
                                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($result as $row) {
@@ -305,7 +295,7 @@ if($success_message1 != '') {
                                         <?php echo LANG_VALUE_52; ?> <br>
                                         <select name="size_id" class="form-control select2" style="width:auto;">
                                             <?php
-                                            $statement = $pdo->prepare("SELECT * FROM tbl_size");
+                                            $statement = $pdo->prepare("SELECT size_id, size_name FROM tbl_size");
                                             $statement->execute();
                                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                             foreach ($result as $row) {
@@ -325,7 +315,7 @@ if($success_message1 != '') {
                                         <?php echo LANG_VALUE_53; ?> <br>
                                         <select name="color_id" class="form-control select2" style="width:auto;">
                                             <?php
-                                            $statement = $pdo->prepare("SELECT * FROM tbl_color");
+                                            $statement = $pdo->prepare("SELECT color_id, color_name FROM tbl_color");
                                             $statement->execute();
                                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                             foreach ($result as $row) {
@@ -431,7 +421,7 @@ if($success_message1 != '') {
 
                                     <div class="review-form">
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * 
+                                        $statement = $pdo->prepare("SELECT rating , comment, cust_name
                                                             FROM tbl_rating t1 
                                                             JOIN tbl_customer t2 
                                                             ON t1.cust_id = t2.cust_id 
@@ -495,7 +485,7 @@ if($success_message1 != '') {
                                         <?php if(isset($_SESSION['customer'])): ?>
 
                                             <?php
-                                            $statement = $pdo->prepare("SELECT * 
+                                            $statement = $pdo->prepare("SELECT p_id
                                                                 FROM tbl_rating
                                                                 WHERE p_id=? AND cust_id=?");
                                             $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id']));
@@ -556,7 +546,8 @@ if($success_message1 != '') {
                 <div class="product-carousel">
 
                     <?php
-                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE tcat_id=? AND p_id!=?");
+                    $statement = $pdo->prepare("SELECT p_featured_photo, p_id, p_name, p_current_price, p_old_price, p_qty
+                                                FROM tbl_product WHERE tcat_id=? AND p_id!=?");
                     $statement->execute(array($tcat_id,$_REQUEST['id']));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($result as $row) {
@@ -579,7 +570,7 @@ if($success_message1 != '') {
                                 <div class="rating">
                                     <?php
                                     $t_rating = 0;
-                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                    $statement1 = $pdo->prepare("SELECT rating FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
                                     $tot_rating = $statement1->rowCount();
                                     if($tot_rating == 0) {

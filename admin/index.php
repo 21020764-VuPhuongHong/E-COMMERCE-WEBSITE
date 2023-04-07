@@ -5,23 +5,23 @@
 </section>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_top_category");
+$statement = $pdo->prepare("SELECT tcat_id FROM tbl_top_category");
 $statement->execute();
 $total_top_category = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product");
+$statement = $pdo->prepare("SELECT p_id FROM tbl_product");
 $statement->execute();
 $total_product = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=?");
+$statement = $pdo->prepare("SELECT payment_status FROM tbl_payment WHERE payment_status=?");
 $statement->execute(array('Completed'));
 $total_order_completed = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE shipping_status=?");
+$statement = $pdo->prepare("SELECT shipping_status FROM tbl_payment WHERE shipping_status=?");
 $statement->execute(array('Completed'));
 $total_shipping_completed = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=? AND shipping_status=?");
+$statement = $pdo->prepare("SELECT payment_status FROM tbl_payment WHERE payment_status=? AND shipping_status=?");
 $statement->execute(array('Completed','Pending'));
 $total_order_complete_shipping_pending = $statement->rowCount();
 ?>

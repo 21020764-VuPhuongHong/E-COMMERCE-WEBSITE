@@ -17,7 +17,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['task']) ) {
 ?>
 
 <?php
-	$statement = $pdo->prepare("UPDATE tbl_payment SET payment_status=? WHERE id=?");
+	$statement = $pdo->prepare("UPDATE tbl_payment SET shipping_status=? WHERE id=?");
 	$statement->execute(array($_REQUEST['task'],$_REQUEST['id']));
 
 	header('location: order.php');

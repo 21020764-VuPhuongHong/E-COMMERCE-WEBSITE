@@ -44,7 +44,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_slider WHERE id=?");
+	$statement = $pdo->prepare("SELECT id FROM tbl_slider WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -57,10 +57,10 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Slider</h1>
+		<h1>Sửa thanh trượt</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="slider.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="slider.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -102,25 +102,25 @@ foreach ($result as $row) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Existing Photo</label>
+							<label for="" class="col-sm-2 control-label">Hình ảnh hiện tại</label>
 							<div class="col-sm-9" style="padding-top:5px">
 								<img src="../assets/uploads/<?php echo $photo; ?>" alt="Slider Photo" style="width:400px;">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Photo </label>
+							<label for="" class="col-sm-2 control-label">Hình ảnh </label>
 							<div class="col-sm-6" style="padding-top:5px">
-								<input type="file" name="photo">(Only jpg, jpeg, gif and png are allowed)
+								<input type="file" name="photo">(Chỉ cho phép jpg, jpeg, gif và png)
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Heading </label>
+							<label for="" class="col-sm-2 control-label">Phần mở đầu </label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="heading" value="<?php echo $heading; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Content </label>
+							<label for="" class="col-sm-2 control-label">Nội dung </label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="content" style="height:140px;"><?php echo $content; ?></textarea>
 							</div>
@@ -138,19 +138,19 @@ foreach ($result as $row) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Position </label>
+							<label for="" class="col-sm-2 control-label">Vị trí </label>
 							<div class="col-sm-6">
 								<select name="position" class="form-control">
-									<option value="Left" <?php if($position == 'Left') {echo 'selected';} ?>>Left</option>
-									<option value="Center" <?php if($position == 'Center') {echo 'selected';} ?>>Center</option>
-									<option value="Right" <?php if($position == 'Right') {echo 'selected';} ?>>Right</option>
+									<option value="Left" <?php if($position == 'Left') {echo 'selected';} ?>>Trái</option>
+									<option value="Center" <?php if($position == 'Center') {echo 'selected';} ?>>Giữa</option>
+									<option value="Right" <?php if($position == 'Right') {echo 'selected';} ?>>Phải</option>
 								</select>
 							</div>
 						</div>				
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Hoàn thành</button>
 							</div>
 						</div>
 					</div>

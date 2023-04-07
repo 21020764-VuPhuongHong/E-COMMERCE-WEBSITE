@@ -57,10 +57,10 @@ if(isset($_POST['form1'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Add Service</h1>
+		<h1>Thêm dịch vụ</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="service.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="service.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
@@ -88,27 +88,27 @@ if(isset($_POST['form1'])) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Tiêu đề <span>*</span></label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="title" value="<?php if(isset($_POST['title'])){echo $_POST['title'];} ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Content <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Nội dung <span>*</span></label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="content" style="height:200px;"><?php if(isset($_POST['content'])){echo $_POST['content'];} ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Photo <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Hình ảnh <span>*</span></label>
 							<div class="col-sm-9" style="padding-top:5px">
-								<input type="file" name="photo">(Only jpg, jpeg, gif and png are allowed)
+								<input type="file" name="photo">(Chỉ cho phép jpg, jpeg, gif và png)
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Hoàn thành</button>
 							</div>
 						</div>
 					</div>

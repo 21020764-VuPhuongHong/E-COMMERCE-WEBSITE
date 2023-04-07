@@ -18,7 +18,7 @@ if(isset($_POST['form1'])) {
         $message_text = strip_tags($_POST['message_text']);
 
         // Getting Customer Email Address
-        $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=?");
+        $statement = $pdo->prepare("SELECT cust_email FROM tbl_customer WHERE cust_id=?");
         $statement->execute(array($_POST['cust_id']));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
@@ -26,7 +26,7 @@ if(isset($_POST['form1'])) {
         }
 
         // Getting Admin Email Address
-        $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+        $statement = $pdo->prepare("SELECT contact_email FROM tbl_settings WHERE id=1");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
@@ -138,16 +138,18 @@ if($success_message != '') {
         
         <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-striped">
-            <tr>
-                <th>STT</th>
-                <th>Chi tiết khách hàng</th>
-                <th>Thông tin chi tiết sản phẩm</th>
-                <th>Thông tin thanh toán</th>
-                <th>Số tiền thanh toán</th>
-                <th>Tình trạng thanh toán</th>
-                <th>Tình trạng giao hàng</th>
-                <th>Thay đổi</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Chi tiết khách hàng</th>
+                    <th>Thông tin chi tiết sản phẩm</th>
+                    <th>Thông tin thanh toán</th>
+                    <th>Số tiền thanh toán</th>
+                    <th>Tình trạng thanh toán</th>
+                    <th>Tình trạng giao hàng</th>
+                    <th>Thay đổi</th>
+                </tr>
+            </thead>
             <tbody>
             	<?php
             	$i=0;

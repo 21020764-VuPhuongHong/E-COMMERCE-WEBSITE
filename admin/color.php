@@ -20,15 +20,17 @@
         
         <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-striped">
-			<tr>
-				<th>STT</th>
-				<th>Màu</th>
-				<th>Thay đổi</th>
-			</tr>
+			<thead>
+				<tr>
+					<th>STT</th>
+					<th>Màu</th>
+					<th>Thay đổi</th>
+				</tr>
+			</thead>
             <tbody>
             	<?php
             	$i=0;
-            	$statement = $pdo->prepare("SELECT * FROM tbl_color ORDER BY color_id ASC");
+            	$statement = $pdo->prepare("SELECT color_name, color_id FROM tbl_color ORDER BY color_id ASC");
             	$statement->execute();
             	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
             	foreach ($result as $row) {
