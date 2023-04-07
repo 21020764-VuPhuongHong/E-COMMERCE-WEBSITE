@@ -5,7 +5,7 @@
         <ul id="menu-group-1" class="nav menu">
             <?php
                 $i=0;
-                $statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
+                $statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category WHERE show_on_menu=1");
                 $statement->execute();
                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as $row) {

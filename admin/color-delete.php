@@ -7,7 +7,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
+	$statement = $pdo->prepare("SELECT color_id FROM tbl_color WHERE color_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	if( $total == 0 ) {

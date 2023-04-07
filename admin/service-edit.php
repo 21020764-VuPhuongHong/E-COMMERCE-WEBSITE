@@ -54,7 +54,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_service WHERE id=?");
+	$statement = $pdo->prepare("SELECT id FROM tbl_service WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -67,15 +67,15 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Service</h1>
+		<h1>Sửa dịch vụ</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="service.php" class="btn btn-primary btn-sm">View All</a>
+		<a href="service.php" class="btn btn-primary btn-sm">Quay lại</a>
 	</div>
 </section>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_service WHERE id=?");
+$statement = $pdo->prepare("SELECT title, content, photo FROM tbl_service WHERE id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
@@ -109,33 +109,33 @@ foreach ($result as $row) {
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Tiêu đề <span>*</span></label>
 							<div class="col-sm-6">
 								<input type="text" autocomplete="off" class="form-control" name="title" value="<?php echo $title; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Content <span>*</span></label>
+							<label for="" class="col-sm-2 control-label">Nội dung <span>*</span></label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="content" style="height:140px;"><?php echo $content; ?></textarea>
 							</div>
 						</div>	
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Existing Photo</label>
+							<label for="" class="col-sm-2 control-label">Hình ảnh hiện tại</label>
 							<div class="col-sm-9" style="padding-top:5px">
 								<img src="../assets/uploads/<?php echo $photo; ?>" alt="Service Photo" style="width:180px;">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Photo </label>
+							<label for="" class="col-sm-2 control-label">Hình ảnh </label>
 							<div class="col-sm-6" style="padding-top:5px">
-								<input type="file" name="photo">(Only jpg, jpeg, gif and png are allowed)
+								<input type="file" name="photo">(Chỉ cho phép jpg, jpeg, gif và png)
 							</div>
 						</div>	
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Hoàn thành</button>
 							</div>
 						</div>
 					</div>

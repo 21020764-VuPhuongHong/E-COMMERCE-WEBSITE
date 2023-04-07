@@ -186,7 +186,7 @@ if(isset($_POST['form1'])) {
 							<div class="col-sm-4">
 								<select name="tcat_id" class="form-control select2 top-cat">
 									<?php
-									$statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
+									$statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category ORDER BY tcat_name ASC");
 									$statement->execute();
 									$result = $statement->fetchAll(PDO::FETCH_ASSOC);	
 									foreach ($result as $row) {
@@ -227,7 +227,7 @@ if(isset($_POST['form1'])) {
 							<div class="col-sm-4">
 								<select name="size[]" class="form-control select2" multiple="multiple">
 									<?php
-									$statement = $pdo->prepare("SELECT * FROM tbl_size ORDER BY size_id ASC");
+									$statement = $pdo->prepare("SELECT size_id, size_name FROM tbl_size ORDER BY size_id ASC");
 									$statement->execute();
 									$result = $statement->fetchAll(PDO::FETCH_ASSOC);			
 									foreach ($result as $row) {
@@ -244,7 +244,7 @@ if(isset($_POST['form1'])) {
 							<div class="col-sm-4">
 								<select name="color[]" class="form-control select2" multiple="multiple">
 									<?php
-									$statement = $pdo->prepare("SELECT * FROM tbl_color ORDER BY color_id ASC");
+									$statement = $pdo->prepare("SELECT color_id, color_name FROM tbl_color ORDER BY color_id ASC");
 									$statement->execute();
 									$result = $statement->fetchAll(PDO::FETCH_ASSOC);			
 									foreach ($result as $row) {
