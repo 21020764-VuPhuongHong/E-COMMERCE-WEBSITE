@@ -10,14 +10,14 @@ if(isset($_POST['form1'])) {
     } else {
 		// Duplicate Color checking
     	// current Color name that is in the database
-    	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
+    	$statement = $pdo->prepare("SELECT color_name FROM tbl_color WHERE color_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach($result as $row) {
 			$current_color_name = $row['color_name'];
 		}
 
-		$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_name=? and color_name!=?");
+		$statement = $pdo->prepare("SELECT color_name FROM tbl_color WHERE color_name=? and color_name!=?");
     	$statement->execute(array($_POST['color_name'],$current_color_name));
     	$total = $statement->rowCount();							
     	if($total) {
@@ -42,7 +42,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
+	$statement = $pdo->prepare("SELECT color_id, color_name FROM tbl_color WHERE color_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);

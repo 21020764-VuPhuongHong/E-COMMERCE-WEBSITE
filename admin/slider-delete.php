@@ -6,7 +6,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_slider WHERE id=?");
+	$statement = $pdo->prepare("SELECT id FROM tbl_slider WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	if( $total == 0 ) {
@@ -19,7 +19,7 @@ if(!isset($_REQUEST['id'])) {
 <?php
 
 	// Getting photo ID to unlink from folder
-	$statement = $pdo->prepare("SELECT * FROM tbl_slider WHERE id=?");
+	$statement = $pdo->prepare("SELECT photo FROM tbl_slider WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 	foreach ($result as $row) {

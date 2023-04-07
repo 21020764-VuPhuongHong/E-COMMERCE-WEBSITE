@@ -9,7 +9,7 @@ if(isset($_POST['form1'])) {
         $error_message .= "Top Category Name can not be empty<br>";
     } else {
     	// Duplicate Category checking
-    	$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE tcat_name=?");
+    	$statement = $pdo->prepare("SELECT tcat_name FROM tbl_top_category WHERE tcat_name=?");
     	$statement->execute(array($_POST['tcat_name']));
     	$total = $statement->rowCount();
     	if($total)

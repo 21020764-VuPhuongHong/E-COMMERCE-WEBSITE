@@ -20,12 +20,14 @@
         
         <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-striped">
-			<tr>
-				<th>STT</th>
-				<th>Tên danh mục</th>
-				<th>Hiện thụ trên menu</th>
-				<th>Thay đổi</th>
-			</tr>
+			<thead>
+				<tr>
+					<th>STT</th>
+					<th>Tên danh mục</th>
+					<th>Hiện thụ trên menu</th>
+					<th>Thay đổi</th>
+				</tr>
+			</thead>
             <tbody>
             	<?php
             	$i=0;

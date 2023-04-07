@@ -20,13 +20,13 @@
         
         <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-striped">
-			<!-- <thead> -->
+			<thead>
 			    <tr>
 			        <th>SL</th>
 			        <th>Size Name</th>
 			        <th>Action</th>
 			    </tr>
-			<!-- </thead> -->
+			</thead>
             <tbody>
             	<?php
             	$i=0;

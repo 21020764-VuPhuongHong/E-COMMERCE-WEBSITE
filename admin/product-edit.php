@@ -192,7 +192,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+	$statement = $pdo->prepare("SELECT p_id FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -232,14 +232,14 @@ foreach ($result as $row) {
 	$tcat_id = $row['tcat_id'];
 }
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product_size WHERE p_id=?");
+$statement = $pdo->prepare("SELECT size_id FROM tbl_product_size WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 foreach ($result as $row) {
 	$size_id[] = $row['size_id'];
 }
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product_color WHERE p_id=?");
+$statement = $pdo->prepare("SELECT color_id FROM tbl_product_color WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 foreach ($result as $row) {
@@ -278,7 +278,7 @@ foreach ($result as $row) {
 							<div class="col-sm-4">
 								<select name="tcat_id" class="form-control select2 top-cat">
 		                            <?php
-		                            $statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_name ASC");
+		                            $statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category ORDER BY tcat_name ASC");
 		                            $statement->execute();
 		                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);   
 		                            foreach ($result as $row) {
@@ -320,7 +320,7 @@ foreach ($result as $row) {
 								<select name="size[]" class="form-control select2" multiple="multiple">
 									<?php
 									$is_select = '';
-									$statement = $pdo->prepare("SELECT * FROM tbl_size ORDER BY size_id ASC");
+									$statement = $pdo->prepare("SELECT size_id, size_name FROM tbl_size ORDER BY size_id ASC");
 									$statement->execute();
 									$result = $statement->fetchAll(PDO::FETCH_ASSOC);			
 									foreach ($result as $row) {

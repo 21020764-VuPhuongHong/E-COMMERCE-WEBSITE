@@ -13,7 +13,7 @@ if(!isset($_REQUEST['search_text'])) {
 ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT banner_search FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -48,7 +48,7 @@ foreach ($result as $row) {
 			<?php
             /* ===================== Pagination Code Starts ================== */
             $adjacents = 5;
-            $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? AND p_name LIKE ?");
+            $statement = $pdo->prepare("SELECT p_is_active FROM tbl_product WHERE p_is_active=? AND p_name LIKE ?");
             $statement->execute(array(1,$search_text));
             $total_pages = $statement->rowCount();
 
@@ -61,7 +61,7 @@ foreach ($result as $row) {
                 $start = 0;
             
 
-            $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? AND p_name LIKE ? LIMIT $start, $limit");
+            $statement = $pdo->prepare("SELECT p_featured_photo, p_id, p_name, p_current_price, p_old_price, p_qty FROM tbl_product WHERE p_is_active=? AND p_name LIKE ? LIMIT $start, $limit");
             $statement->execute(array(1,$search_text));
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
            
@@ -169,7 +169,7 @@ foreach ($result as $row) {
                                             <div class="rating">
                                                 <?php
                                                 $t_rating = 0;
-                                                $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                                $statement1 = $pdo->prepare("SELECT rating FROM tbl_rating WHERE p_id=?");
                                                 $statement1->execute(array($row['p_id']));
                                                 $tot_rating = $statement1->rowCount();
                                                 if($tot_rating == 0) {

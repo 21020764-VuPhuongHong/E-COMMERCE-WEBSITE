@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT banner_registration FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -27,7 +27,7 @@ if (isset($_POST['form1'])) {
             $valid = 0;
             $error_message .= LANG_VALUE_134."<br>";
         } else {
-            $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email=?");
+            $statement = $pdo->prepare("SELECT cust_email FROM tbl_customer WHERE cust_email=?");
             $statement->execute(array($_POST['cust_email']));
             $total = $statement->rowCount();                            
             if($total) {
@@ -239,7 +239,7 @@ if (isset($_POST['form1'])) {
                                     <select name="cust_country" class="form-control select2">
                                         <option value="">Select country</option>
                                     <?php
-                                    $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
+                                    $statement = $pdo->prepare("SELECT country_id, country_name FROM tbl_country ORDER BY country_name ASC");
                                     $statement->execute();
                                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                                     foreach ($result as $row) {
