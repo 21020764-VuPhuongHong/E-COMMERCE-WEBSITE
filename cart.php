@@ -21,9 +21,7 @@ foreach ($result as $row) {
 		<div class="row">
 			<div class="col-md-12">
 
-                <?php if(!isset($_SESSION['cart_p_id'])): ?>
-                    <?php echo 'Cart is empty'; ?>
-                <?php else: ?>
+                
                 <form action="" method="post">
                     <?php $csrf->echoInputField(); ?>
 				<div class="cart">
@@ -44,7 +42,7 @@ foreach ($result as $row) {
                         <tbody>
 							<?php
 							$i=0;
-							$statement = $pdo->prepare("SELECT                           
+							$statement = $pdo->prepare("SELECT                          
                                                         t1.p_id,
                                                         t1.p_name,
                                                         t1.p_current_price,
@@ -57,7 +55,9 @@ foreach ($result as $row) {
                                                         FROM tbl_product t1
                                                         INNER JOIN tbl_cart t2
                                                         ON t1.p_id = t2.p_id
+                                                        WHERE cust_id=:cust_id;
                                                         ");
+                            $statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);                            
                             $statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             $table_total_price = 0;
@@ -74,7 +74,7 @@ foreach ($result as $row) {
 									<td><?php echo $row['p_quantity']; ?></td>
 									<td class="text-right"><?php echo $row['p_quantity'] * $row['p_current_price']; ?></td>
                                     <td class="text-center">
-                                        <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash"></i></a>
+                                        <a onclick="return confirmDelete();" href="cart-item-delete.php?c_id=<?php echo $row['c_id']; ?>" class="trash"><i class="fa fa-trash"></i></a>
                                     </td>
 								</tr>
 								<?php
@@ -99,7 +99,7 @@ foreach ($result as $row) {
                     </ul>
                 </div>
                 </form>
-                <?php endif; ?>
+                
 
                 
 

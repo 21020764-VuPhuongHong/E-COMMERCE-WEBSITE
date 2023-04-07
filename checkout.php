@@ -10,10 +10,10 @@ foreach ($result as $row) {
 ?>
 
 <?php
-if(!isset($_SESSION['cart_p_id'])) {
-    header('location: cart.php');
-    exit;
-}
+// if(!isset($_SESSION['cart_p_id'])) {
+//     header('location: cart.php');
+//     exit;
+// }
 ?>
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
@@ -54,7 +54,6 @@ if(!isset($_SESSION['cart_p_id'])) {
                                                         t1.p_id,
                                                         t1.p_name,
                                                         t1.p_current_price,
-                                                        t1.p_qty,
                                                         t1.p_featured_photo,
                                                         t2.c_id,
                                                         t2.p_quantity,
@@ -64,7 +63,9 @@ if(!isset($_SESSION['cart_p_id'])) {
                                                         FROM tbl_product t1
                                                         INNER JOIN tbl_cart t2
                                                         ON t1.p_id = t2.p_id
+                                                        WHERE t2.cust_id = :cust_id;
                                                         ");
+                            $statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);                            
                             $statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             $table_total_price = 0;
@@ -78,11 +79,12 @@ if(!isset($_SESSION['cart_p_id'])) {
 									<td><?php echo $row['size']; ?></td>
 									<td><?php echo $row['color']; ?></td>
 									<td><?php echo $row['p_current_price']; ?></td>
-									<td><?php echo $row['p_qty']; ?></td>
-									<td class="text-right"><?php echo $row['p_qty'] * $row['p_current_price']; ?></td>
+									<td><?php echo $row['p_quantity']; ?></td>
+									<td class="text-right"><?php echo $row['p_quantity'] * $row['p_current_price']; ?></td>
+                                    
 								</tr>
 								<?php
-                                $table_total_price += $row['p_qty'] * $row['p_current_price'];
+                                $table_total_price += $row['p_quantity'] * $row['p_current_price'];
 							}
 							?>							
 						</tbody>          

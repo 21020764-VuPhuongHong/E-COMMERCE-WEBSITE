@@ -106,32 +106,34 @@ if(isset($_POST['form_add_to_cart'])) {
     if(!isset($_SESSION['customer'])) {
         header('location: login.php');
         exit;
-    }
+	}
 
 
 
     // Lưu thông tin vào giỏ hàng
-    $size_name = '';
-    $color_name = '';
+        $size_name = '';
+        $color_name = '';
 
-    $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=:id");
+        $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=:id");
     $statement->bindParam(':id', $_POST['size_id']);
-    $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
-    foreach ($result as $row) {
-        $size_name = $row['size_name'];
-    }
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+        foreach ($result as $row) {
+            $size_name = $row['size_name'];
+        }
 
-    $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=:id");
+        $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=:id");
     $statement->bindParam(':id', $_POST['color_id']);
-    $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
-    foreach ($result as $row) {
-        $color_name = $row['color_name'];
-    }
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+        foreach ($result as $row) {
+            $color_name = $row['color_name'];
+        }
 
     $statement = $pdo->prepare("SELECT c_id, p_quantity FROM tbl_cart
-                                 WHERE p_id=:p_id AND size=:size AND color=:color");
+                                    WHERE cust_id=:cust_id AND p_id=:p_id AND size=:size AND color=:color");
+
+    $statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);
     $statement->bindParam(':p_id', $p_id);
     $statement->bindParam(':size', $size_name);
     $statement->bindParam(':color', $color_name);

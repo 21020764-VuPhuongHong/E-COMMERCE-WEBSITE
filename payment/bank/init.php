@@ -56,104 +56,47 @@ if( !isset($_REQUEST['msg']) ) {
 	                            $payment_id
 	                        ));
 
-	    $i=0;
-	    foreach($_SESSION['cart_p_id'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_p_id[$i] = $value;
-	    }
-
-	    $i=0;
-	    foreach($_SESSION['cart_p_name'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_p_name[$i] = $value;
-	    }
-
-	    $i=0;
-	    foreach($_SESSION['cart_size_name'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_size_name[$i] = $value;
-	    }
-
-	    $i=0;
-	    foreach($_SESSION['cart_color_name'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_color_name[$i] = $value;
-	    }
-
-	    $i=0;
-	    foreach($_SESSION['cart_p_qty'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_p_qty[$i] = $value;
-	    }
-
-	    $i=0;
-	    foreach($_SESSION['cart_p_current_price'] as $key => $value) 
-	    {
-	        $i++;
-	        $arr_cart_p_current_price[$i] = $value;
-	    }
-
-	    $i=0;
-	    $statement = $pdo->prepare("SELECT * FROM tbl_product");
-	    $statement->execute();
-	    $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
-	    foreach ($result as $row) {
-	    	$i++;
-	    	$arr_p_id[$i] = $row['p_id'];
-	    	$arr_p_qty[$i] = $row['p_qty'];
-	    }
-
-	    for($i=1;$i<=count($arr_cart_p_name);$i++) {
-	        $statement = $pdo->prepare("INSERT INTO tbl_order (
-	                        product_id,
-	                        product_name,
-	                        size, 
-	                        color,
-	                        quantity, 
-	                        unit_price, 
-	                        payment_id
-	                        ) 
-	                        VALUES (?,?,?,?,?,?,?)");
-	        $sql = $statement->execute(array(
-	                        $arr_cart_p_id[$i],
-	                        $arr_cart_p_name[$i],
-	                        $arr_cart_size_name[$i],
-	                        $arr_cart_color_name[$i],
-	                        $arr_cart_p_qty[$i],
-	                        $arr_cart_p_current_price[$i],
-	                        $payment_id
-	                    ));
-
-	        // Update the stock
-            for($j=1;$j<=count($arr_p_id);$j++)
-            {
-                if($arr_p_id[$j] == $arr_cart_p_id[$i]) 
-                {
-                    $current_qty = $arr_p_qty[$j];
-                    break;
-                }
-            }
-            $final_quantity = $current_qty - $arr_cart_p_qty[$i];
-            $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
-            $statement->execute(array($final_quantity,$arr_cart_p_id[$i]));
-            
-	    }
-	    unset($_SESSION['cart_p_id']);
-	    unset($_SESSION['cart_size_id']);
-	    unset($_SESSION['cart_size_name']);
-	    unset($_SESSION['cart_color_id']);
-	    unset($_SESSION['cart_color_name']);
-	    unset($_SESSION['cart_p_qty']);
-	    unset($_SESSION['cart_p_current_price']);
-	    unset($_SESSION['cart_p_name']);
-	    unset($_SESSION['cart_p_featured_photo']);
+		$statement = $pdo->prepare("SELECT t1.p_id, t1.size, t1.color, t1.p_quantity,  t2.p_name, t2.p_current_price, t2.p_qty
+									FROM tbl_cart t1
+									INNER JOIN tbl_product t2
+									ON t1.p_id = t1.p_id
+									WHERE cust_id = :cust_id");
+		$statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);
+		$statement->execute();
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($result as $row){
+			$statement = $pdo->prepare("INSERT INTO tbl_order (
+				product_id,
+				product_name,
+				size, 
+				color,
+				quantity, 
+				unit_price, 
+				payment_id
+				) 
+				VALUES (:p_id, :p_name, :size, :color, :p_quantity, :p_current_price, :payment_id)");
+			$statement->bindParam(':p_id', $row['p_id']);
+			$statement->bindParam(':p_name', $row['p_name']);
+			$statement->bindParam(':size', $row['size']);
+			$statement->bindParam(':color', $row['color']);
+			$statement->bindParam(':p_quantity', $row['p_quantity']);
+			$statement->bindParam(':p_current_price', $row['p_current_price']);
+			$statement->bindParam(':payment_id', $payment_id);
+			$statement->execute();
+			
+			//update quantity product
+            $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=:p_qty WHERE p_id=:p_id");
+			$quantity = $row['p_qty'] - $row['p_quantity'];
+			$statement->bindParam(':p_qty', $quantity);
+			$statement->bindParam(':p_id', $row['p_id']);
+            $statement->execute();
+		}
 
 	    header('location: ../../payment_success.php');
 	}
+	$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE cust_id = :cust_id");
+	$statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);
+	$statement->execute();
+
 }
 ?>
