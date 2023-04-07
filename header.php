@@ -250,8 +250,8 @@ foreach ($result as $row) {
 
 <?php echo $before_head; ?>
 
-</head>
-<body>
+
+
 
 
 
@@ -266,7 +266,7 @@ foreach ($result as $row) {
 			<div class="col-md-5 right">
 				<ul>
 					
-					<?php
+					<?php	
 					if(isset($_SESSION['customer'])) {
 						?>
 						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
@@ -336,9 +336,7 @@ foreach ($result as $row) {
 							?>
 
 							<li><a href="about.php"><?php echo $about_title; ?></a></li>
-							<!-- <li><a href="faq.php"><?php echo $faq_title; ?></a></li>
-
-							<li><a href="contact.php"><?php echo $contact_title; ?></a></li> -->
+							
 						</ul>
 					</div>
 				</div>
