@@ -78,10 +78,6 @@ if(!isset($_REQUEST['id'])) {
 			$statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
-			// Delete from tbl_rating
-			$statement = $pdo->prepare("DELETE FROM tbl_rating WHERE p_id=?");
-			$statement->execute(array($p_ids[$i]));
-
 			// Delete from tbl_payment
 			$statement = $pdo->prepare("SELECT payment_id FROM tbl_order WHERE product_id=?");
 			$statement->execute(array($p_ids[$i]));
