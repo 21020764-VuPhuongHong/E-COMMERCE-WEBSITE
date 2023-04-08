@@ -36,7 +36,7 @@ if(!isset($_REQUEST['id'])) {
 	}
 
 
-	// Delete from tbl_photo
+	// Delete from tbl_product
 	$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
