@@ -131,22 +131,22 @@ foreach ($result as $row) {
                 <div class="billing-address">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_161; ?></h3>
+                            <h3 class="special">Địa chỉ hoá đơn</h3>
                             <table class="table table-responsive table-bordered bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td>Họ và tên</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td>Tên công ty</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td>Số điện thoại</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td>Quốc gia</td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT country_name FROM tbl_country WHERE country_id=?");
@@ -159,42 +159,42 @@ foreach ($result as $row) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td>Địa chỉ</td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_b_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td>Thành phố</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td>Quận</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td>Mã zip</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_zip']; ?></td>
                                 </tr>                                
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_162; ?></h3>
+                            <h3 class="special">Địa chỉ nhận hàng</h3>
                             <table class="table table-responsive table-bordered bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td>Họ và tên</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td>Tên công ty</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td>Số điện thoại</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td>Quốc gia</td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT country_name FROM tbl_country WHERE country_id=?");
@@ -207,21 +207,21 @@ foreach ($result as $row) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td>Địa chỉ</td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_s_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td>Thành phố</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td>Quận</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td>Mã zip</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_zip']; ?></td>
                                 </tr> 
                             </table>
@@ -238,7 +238,7 @@ foreach ($result as $row) {
                 </div>
 
 				<div class="clear"></div>
-                <h3 class="special"><?php echo LANG_VALUE_33; ?></h3>
+                <h3 class="special">Nơi thanh toán</h3>
                 <div class="row">
                     
                     	<?php
@@ -267,8 +267,9 @@ foreach ($result as $row) {
 		                <?php if($checkout_access == 0): ?>
 		                	<div class="col-md-12">
 				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the billing and shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
-			                    </div>
+			                        <!-- You must have to fill up all the billing and shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>. -->
+                                    Bạn phải điền vào tất cả thông tin thanh toán và giao hàng từ bảng điều khiển của mình để thanh toán đơn đặt hàng. Vui lòng điền thông tin vào <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">đây</a>.
+                                </div>
 	                    	</div>
 	                	<?php else: ?>
 		                	<div class="col-md-4">

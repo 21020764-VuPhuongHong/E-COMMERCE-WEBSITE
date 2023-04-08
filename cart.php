@@ -95,7 +95,7 @@ foreach ($result as $row) {
                     <ul>
                         <li><input type="submit" value="Cập nhật giỏ hàng" class="btn btn-primary" name="form1"></li>
                         <li><a href="index.php" class="btn btn-primary"><!--<?php echo LANG_VALUE_85; ?>-->Tiếp tục mua sắm</a></li>
-                        <li><a href="checkout.php" class="btn btn-primary"><!--<?php echo LANG_VALUE_23; ?>-->Đi tới checkout</a></li>
+                        <li><a href="checkout.php" class="btn btn-primary"><!--<?php echo LANG_VALUE_23; ?>-->Thanh toán</a></li>
                     </ul>
                 </div>
                 </form>
