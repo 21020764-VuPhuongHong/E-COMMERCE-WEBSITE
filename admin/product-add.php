@@ -107,7 +107,7 @@ if(isset($_POST['form1'])) {
 										p_is_featured,
 										p_is_active,
 										tcat_id
-									) VALUES (?,?,?,?,?,?,?,?,?,?)");
+									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		$statement->execute(array(
 										$_POST['p_name'],
 										$_POST['p_old_price'],
