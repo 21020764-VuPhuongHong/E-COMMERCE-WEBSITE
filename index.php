@@ -125,8 +125,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo $featured_product_title; ?></h2>
-                    <h3><?php echo $featured_product_subtitle; ?></h3>
+                    <h2>SẢN PHẨM NỔI BẬT</h2>
+                    <h3>Xem các sản phẩm nổi bật tại đây</h3>
                 </div>
             </div>
         </div>
@@ -185,8 +185,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo $latest_product_title; ?></h2>
-                    <h3><?php echo $latest_product_subtitle; ?></h3>
+                    <h2>SẢN PHẨM MỚI NHẤT</h2>
+                    <h3>Xem các sản phẩm mới nhất tại đây</h3>
                 </div>
             </div>
         </div>
