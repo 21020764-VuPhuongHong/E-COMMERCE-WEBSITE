@@ -64,15 +64,15 @@ foreach ($result as $row) {
 			}
 			$final = $p_qty+$row1['quantity'];
 
-			$statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_product SET p_qty=? WHERE p_id=?");
 			$statement->execute(array($final,$row1['product_id']));
 		}
 		
 		// Deleting data from table
-		$statement1 = $pdo->prepare("DELETE FROM tbl_order WHERE payment_id=?");
+		$statement1 = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_order WHERE payment_id=?");
 		$statement1->execute(array($row['payment_id']));
 
-		$statement1 = $pdo->prepare("DELETE FROM tbl_payment WHERE id=?");
+		$statement1 = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_payment WHERE id=?");
 		$statement1->execute(array($row['id']));
 	}
 }

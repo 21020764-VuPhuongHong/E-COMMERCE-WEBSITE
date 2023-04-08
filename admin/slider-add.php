@@ -34,7 +34,7 @@ if(isset($_POST['form1'])) {
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
 	
-		$statement = $pdo->prepare("INSERT INTO tbl_slider (photo,heading,content,button_text,button_url,position) VALUES (?,?,?,?,?,?)");
+		$statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_slider (photo,heading,content,button_text,button_url,position) VALUES (?,?,?,?,?,?)");
 		$statement->execute(array($final_name,$_POST['heading'],$_POST['content'],$_POST['button_text'],$_POST['button_url'],$_POST['position']));
 			
 		$success_message = 'Slider is added successfully!';

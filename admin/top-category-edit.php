@@ -28,7 +28,7 @@ if(isset($_POST['form1'])) {
 
     if($valid == 1) {    	
 		// updating into the database
-		$statement = $pdo->prepare("UPDATE tbl_top_category SET tcat_name=?,show_on_menu=? WHERE tcat_id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_top_category SET tcat_name=?,show_on_menu=? WHERE tcat_id=?");
 		$statement->execute(array($_POST['tcat_name'],$_POST['show_on_menu'],$_REQUEST['id']));
 
     	$success_message = 'Top Category is updated successfully.';

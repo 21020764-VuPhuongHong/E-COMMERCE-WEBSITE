@@ -20,7 +20,8 @@ if(!isset($_REQUEST['id'])) {
 <?php
 
 	// Delete from tbl_color
-	$statement = $pdo->prepare("DELETE FROM tbl_color WHERE color_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;
+								DELETE FROM tbl_color WHERE color_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: color.php');

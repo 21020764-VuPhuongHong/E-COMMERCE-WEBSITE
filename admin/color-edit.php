@@ -28,7 +28,8 @@ if(isset($_POST['form1'])) {
 
     if($valid == 1) {    	
 		// updating into the database
-		$statement = $pdo->prepare("UPDATE tbl_color SET color_name=? WHERE color_id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;
+									UPDATE tbl_color SET color_name=? WHERE color_id=?");
 		$statement->execute(array($_POST['color_name'],$_REQUEST['id']));
 
     	$success_message = 'Color is updated successfully.';

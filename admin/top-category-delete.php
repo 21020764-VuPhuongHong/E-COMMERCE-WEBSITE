@@ -63,19 +63,19 @@ if(!isset($_REQUEST['id'])) {
 			}
 
 			// Delete from tbl_product
-			$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_product_photo
-			$statement = $pdo->prepare("DELETE FROM tbl_product_photo WHERE p_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_product_photo WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_product_size
-			$statement = $pdo->prepare("DELETE FROM tbl_product_size WHERE p_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_product_size WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_product_color
-			$statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_product_color WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_payment
@@ -83,29 +83,29 @@ if(!isset($_REQUEST['id'])) {
 			$statement->execute(array($p_ids[$i]));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result as $row) {
-				$statement1 = $pdo->prepare("DELETE FROM tbl_payment WHERE payment_id=?");
+				$statement1 = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_payment WHERE payment_id=?");
 				$statement1->execute(array($row['payment_id']));
 			}
 
 			// Delete from tbl_order
-			$statement = $pdo->prepare("DELETE FROM tbl_order WHERE product_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_order WHERE product_id=?");
 			$statement->execute(array($p_ids[$i]));
 		}
 
 		// Delete from tbl_end_category
 		for($i=0;$i<count($ecat_ids);$i++) {
-			$statement = $pdo->prepare("DELETE FROM tbl_end_category WHERE ecat_id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_end_category WHERE ecat_id=?");
 			$statement->execute(array($ecat_ids[$i]));
 		}
 
 	}
 
 	// Delete from tbl_mid_category
-	$statement = $pdo->prepare("DELETE FROM tbl_mid_category WHERE tcat_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_mid_category WHERE tcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	// Delete from tbl_top_category
-	$statement = $pdo->prepare("DELETE FROM tbl_top_category WHERE tcat_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_top_category WHERE tcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: top-category.php');

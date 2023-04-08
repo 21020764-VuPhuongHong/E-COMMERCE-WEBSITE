@@ -22,7 +22,8 @@ if(isset($_POST['form1'])) {
     if($valid == 1) {
 
 		// Saving data into the main table tbl_color
-		$statement = $pdo->prepare("INSERT INTO tbl_color (color_name) VALUES (?)");
+		$statement = $pdo->prepare("set foreign_key_checks=0;
+									INSERT INTO tbl_color (color_name) VALUES (?)");
 		$statement->execute(array($_POST['color_name']));
 	
     	$success_message = 'Color is added successfully.';

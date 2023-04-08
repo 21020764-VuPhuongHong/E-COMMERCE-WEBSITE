@@ -82,7 +82,8 @@ if(isset($_POST['form1'])) {
             if(isset($final_name1)) {
             	for($i=0;$i<count($final_name1);$i++)
 		        {
-		        	$statement = $pdo->prepare("INSERT INTO tbl_product_photo (photo,p_id) VALUES (?,?)");
+		        	$statement = $pdo->prepare("set foreign_key_checks=0;
+												INSERT INTO tbl_product_photo (photo,p_id) VALUES (?,?)");
 		        	$statement->execute(array($final_name1[$i],$ai_id));
 		        }
             }            
@@ -92,7 +93,8 @@ if(isset($_POST['form1'])) {
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
 		//Saving data into the main table tbl_product
-		$statement = $pdo->prepare("INSERT INTO tbl_product(
+		$statement = $pdo->prepare("set foreign_key_checks=0;
+									INSERT INTO tbl_product(
 										p_name,
 										p_old_price,
 										p_current_price,
@@ -129,14 +131,14 @@ if(isset($_POST['form1'])) {
 
         if(isset($_POST['size'])) {
 			foreach($_POST['size'] as $value) {
-				$statement = $pdo->prepare("INSERT INTO tbl_product_size (size_id,p_id) VALUES (?,?)");
+				$statement = $pdo->prepare("set foreign_key_checks=0; INSERT INTO tbl_product_size (size_id,p_id) VALUES (?,?)");
 				$statement->execute(array($value,$ai_id));
 			}
 		}
-
+ 
 		if(isset($_POST['color'])) {
 			foreach($_POST['color'] as $value) {
-				$statement = $pdo->prepare("INSERT INTO tbl_product_color (color_id,p_id) VALUES (?,?)");
+				$statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_product_color (color_id,p_id) VALUES (?,?)");
 				$statement->execute(array($value,$ai_id));
 			}
 		}
@@ -325,8 +327,8 @@ if(isset($_POST['form1'])) {
 							<label for="" class="col-sm-3 control-label">Is Active?</label>
 							<div class="col-sm-8">
 								<select name="p_is_active" class="form-control" style="width:auto;">
-									<option value="0">Yes</option>
-									<option value="1">No</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
 								</select> 
 							</div>
 						</div>

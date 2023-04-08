@@ -21,7 +21,7 @@ if( !isset($_REQUEST['msg']) ) {
 		$payment_date = date('Y-m-d H:i:s');
 	    $payment_id = time();
 
-	    $statement = $pdo->prepare("INSERT INTO tbl_payment (   
+	    $statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_payment (   
 	                            customer_id,
 	                            customer_name,
 	                            customer_email,
@@ -65,7 +65,7 @@ if( !isset($_REQUEST['msg']) ) {
 		$statement->execute();
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result as $row){
-			$statement = $pdo->prepare("INSERT INTO tbl_order (
+			$statement = $pdo->prepare("set foreign_key_checks=0; INSERT INTO tbl_order (
 				product_id,
 				product_name,
 				size, 
@@ -85,7 +85,7 @@ if( !isset($_REQUEST['msg']) ) {
 			$statement->execute();
 			
 			//update quantity product
-            $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=:p_qty WHERE p_id=:p_id");
+            $statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_product SET p_qty=:p_qty WHERE p_id=:p_id");
 			$quantity = $row['p_qty'] - $row['p_quantity'];
 			$statement->bindParam(':p_qty', $quantity);
 			$statement->bindParam(':p_id', $row['p_id']);
@@ -94,7 +94,7 @@ if( !isset($_REQUEST['msg']) ) {
 
 	    header('location: ../../payment_success.php');
 	}
-	$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE cust_id = :cust_id");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_cart WHERE cust_id = :cust_id");
 	$statement->bindParam(':cust_id', $_SESSION['customer']['cust_id']);
 	$statement->execute();
 

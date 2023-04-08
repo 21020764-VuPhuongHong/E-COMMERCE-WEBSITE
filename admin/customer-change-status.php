@@ -23,7 +23,8 @@ if(!isset($_REQUEST['id'])) {
 
 <?php
 if($cust_status == 0) {$final = 1;} else {$final = 0;}
-$statement = $pdo->prepare("UPDATE tbl_customer SET cust_status=? WHERE cust_id=?");
+$statement = $pdo->prepare("set foreign_key_checks=0;
+							UPDATE tbl_customer SET cust_status=? WHERE cust_id=?");
 $statement->execute(array($final,$_REQUEST['id']));
 
 header('location: customer.php');

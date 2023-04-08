@@ -233,7 +233,7 @@ foreach ($result as $row) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><a href="cart.php" class="btn btn-primary">Trở lại giỏ hàng</a></li>
+                        <li><a href="cart.php" class="btn btn-primary"><!--<?php echo LANG_VALUE_21; ?> -->Quay lại giỏ hàng</a></li>
                     </ul>
                 </div>
 

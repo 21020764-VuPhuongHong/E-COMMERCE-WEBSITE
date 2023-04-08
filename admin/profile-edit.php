@@ -44,7 +44,7 @@ if(isset($_POST['form1'])) {
 	    	$_SESSION['user']['email'] = $_POST['email'];
 
 			// updating the database
-			$statement = $pdo->prepare("UPDATE tbl_user SET full_name=?, email=?, phone=? WHERE id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_user SET full_name=?, email=?, phone=? WHERE id=?");
 			$statement->execute(array($_POST['full_name'],$_POST['email'],$_POST['phone'],$_SESSION['user']['id']));
 
 	    	$success_message = 'User Information is updated successfully.';
@@ -54,7 +54,7 @@ if(isset($_POST['form1'])) {
 		$_SESSION['user']['phone'] = $_POST['phone'];
 
 		// updating the database
-		$statement = $pdo->prepare("UPDATE tbl_user SET phone=? WHERE id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_user SET phone=? WHERE id=?");
 		$statement->execute(array($_POST['phone'],$_SESSION['user']['id']));
 
 		$success_message = 'User Information is updated successfully.';	
@@ -90,7 +90,7 @@ if(isset($_POST['form2'])) {
         $_SESSION['user']['photo'] = $final_name;
 
         // updating the database
-		$statement = $pdo->prepare("UPDATE tbl_user SET photo=? WHERE id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_user SET photo=? WHERE id=?");
 		$statement->execute(array($final_name,$_SESSION['user']['id']));
 
         $success_message = 'User Photo is updated successfully.';
@@ -118,7 +118,7 @@ if(isset($_POST['form3'])) {
     	$_SESSION['user']['password'] = md5($_POST['password']);
 
     	// updating the database
-		$statement = $pdo->prepare("UPDATE tbl_user SET password=? WHERE id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_user SET password=? WHERE id=?");
 		$statement->execute(array(md5($_POST['password']),$_SESSION['user']['id']));
 
     	$success_message = 'User Password is updated successfully.';

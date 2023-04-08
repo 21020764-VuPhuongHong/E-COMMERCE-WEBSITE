@@ -22,7 +22,7 @@ if (isset($_POST['form1'])) {
 
 
     // update data into the database
-    $statement = $pdo->prepare("UPDATE tbl_customer SET 
+    $statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_customer SET 
                             cust_b_name=?, 
                             cust_b_cname=?, 
                             cust_b_phone=?, 

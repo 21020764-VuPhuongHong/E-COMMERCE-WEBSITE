@@ -60,7 +60,7 @@ if (isset($_POST['form1'])) {
     if($valid == 1) {
 
         // update data into the database
-        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, cust_cname=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=? WHERE cust_id=?");
+        $statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_customer SET cust_name=?, cust_cname=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=? WHERE cust_id=?");
         $statement->execute(array(
                     strip_tags($_POST['cust_name']),
                     strip_tags($_POST['cust_cname']),

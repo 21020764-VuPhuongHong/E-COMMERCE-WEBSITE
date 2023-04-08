@@ -80,7 +80,7 @@ if(isset($_POST['form1'])) {
         }
 
         if($path == '') {
-        	$statement = $pdo->prepare("UPDATE tbl_product SET 
+        	$statement = $pdo->prepare("set foreign_key_checks=0; UPDATE tbl_product SET 
         							p_name=?, 
         							p_old_price=?, 
         							p_current_price=?, 
@@ -118,7 +118,7 @@ if(isset($_POST['form1'])) {
         	move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
 
-        	$statement = $pdo->prepare("UPDATE tbl_product SET 
+        	$statement = $pdo->prepare("set foreign_key_checks=0; UPDATE tbl_product SET 
         							p_name=?, 
         							p_old_price=?, 
         							p_current_price=?, 

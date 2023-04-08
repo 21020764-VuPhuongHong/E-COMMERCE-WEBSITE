@@ -8,7 +8,7 @@ if( !isset($_REQUEST['c_id']) ) {
     exit;
 }
 
-$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE c_id = :c_id");
+$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_cart WHERE c_id = :c_id");
 $statement->bindParam(':c_id', $_REQUEST['c_id']);
 $statement->execute();
 

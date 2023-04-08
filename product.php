@@ -52,7 +52,7 @@ foreach ($result as $row) {
 
 $p_total_view = $p_total_view + 1;
 
-$statement = $pdo->prepare("UPDATE tbl_product SET p_total_view=? WHERE p_id=?");
+$statement = $pdo->prepare("set foreign_key_checks=0; UPDATE tbl_product SET p_total_view=? WHERE p_id=?");
 $statement->execute(array($p_total_view,$_REQUEST['id']));
 
 
@@ -110,7 +110,7 @@ if(isset($_POST['form_add_to_cart'])) {
     $numRows = $statement->rowCount();
 
     if($numRows == 0){
-        $statement = $pdo->prepare("INSERT INTO tbl_cart(
+        $statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_cart(
                 p_id,
                 cust_id,
                 p_quantity,
@@ -131,7 +131,7 @@ if(isset($_POST['form_add_to_cart'])) {
             $p_quantity = $row['p_quantity'];
         }
         $p_quantity_after = $p_quantity  + $_POST['p_qty'];
-        $statement = $pdo->prepare("UPDATE tbl_cart 
+        $statement = $pdo->prepare("set foreign_key_checks=0; UPDATE tbl_cart 
                                     SET  p_quantity = :p_quantity 
                                     WHERE c_id = :c_id");
         $statement->bindParam(':c_id', $c_id);

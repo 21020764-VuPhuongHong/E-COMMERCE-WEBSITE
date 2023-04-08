@@ -32,7 +32,7 @@ if(!isset($_REQUEST['id'])) {
 	}
 
 	// Delete from tbl_slider
-	$statement = $pdo->prepare("DELETE FROM tbl_slider WHERE id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_slider WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: slider.php');

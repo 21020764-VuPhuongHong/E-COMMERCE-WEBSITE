@@ -86,7 +86,7 @@ if (isset($_POST['form1'])) {
         $cust_timestamp = time();
 
         // saving into the database
-        $statement = $pdo->prepare("INSERT INTO tbl_customer (
+        $statement = $pdo->prepare("set foreign_key_checks=0; INSERT INTO tbl_customer (
                                         cust_name,
                                         cust_cname,
                                         cust_email,

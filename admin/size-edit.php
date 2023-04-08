@@ -28,7 +28,7 @@ if(isset($_POST['form1'])) {
 
     if($valid == 1) {    	
 		// updating into the database
-		$statement = $pdo->prepare("UPDATE tbl_size SET size_name=? WHERE size_id=?");
+		$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_size SET size_name=? WHERE size_id=?");
 		$statement->execute(array($_POST['size_name'],$_REQUEST['id']));
 
     	$success_message = 'Size is updated successfully.';

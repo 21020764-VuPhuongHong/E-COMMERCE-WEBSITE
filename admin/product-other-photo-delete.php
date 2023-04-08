@@ -32,7 +32,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['id1']) ) {
 	}
 
 	// Delete from tbl_testimonial
-	$statement = $pdo->prepare("DELETE FROM tbl_product_photo WHERE pp_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_product_photo WHERE pp_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: product-edit.php?id='.$_REQUEST['id1']);
