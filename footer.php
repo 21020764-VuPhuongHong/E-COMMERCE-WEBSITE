@@ -1,3 +1,4 @@
+<?php require_once('header.php'); ?>
 <?php
 $statement = $pdo->prepare("SELECT footer_about,
 									contact_email,
@@ -21,7 +22,6 @@ foreach ($result as $row)
 	$total_recent_post_footer = $row['total_recent_post_footer'];
     $total_popular_post_footer = $row['total_popular_post_footer'];
     $newsletter_on_off = $row['newsletter_on_off'];
-    $before_body = $row['before_body'];
 }
 ?>
 
