@@ -133,7 +133,7 @@ if(isset($_POST['form3'])) {
 </section>
 
 <?php
-$statement = $pdo->prepare("SELECT full_name,email, phone, photo, status, role  FROM tbl_user WHERE id=?");
+$statement = $pdo->prepare("SELECT full_name,email, phone, photo, status, role, id FROM tbl_user WHERE id=?");
 $statement->execute(array($_SESSION['user']['id']));
 $statement->rowCount();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
