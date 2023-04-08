@@ -1,5 +1,5 @@
 
-<h3><?php echo LANG_VALUE_49; ?></h3>
+<h3>Thể loại</h3>
     <div id="left" class="span3">
 
         <ul id="menu-group-1" class="nav menu">

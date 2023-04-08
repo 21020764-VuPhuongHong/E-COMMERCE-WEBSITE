@@ -52,7 +52,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>
+        <h1>Thể loại dành cho: <?php echo $title; ?></h1>
     </div>
 </div>
 
@@ -64,7 +64,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
             </div>
             <div class="col-md-9">
                 
-                <h3><?php echo LANG_VALUE_51; ?> "<?php echo $title; ?>"</h3>
+                <h3>Tất cả các sản phẩm dành cho "<?php echo $title; ?>"</h3>
                 <div class="product product-cat">
 
                     <div class="row">
@@ -181,11 +181,11 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                 <?php if($row['p_qty'] == 0): ?>
                                                     <div class="out-of-stock">
                                                         <div class="inner">
-                                                            Out Of Stock
+                                                            Hết hàng
                                                         </div>
                                                     </div>
                                                 <?php else: ?>
-                                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo LANG_VALUE_154; ?></a></p>
+                                                    <p><a href="product.php?id=<?php echo $row['p_id']; ?>">Thêm vào giỏ hàng</a></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
