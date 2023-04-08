@@ -62,7 +62,7 @@ if(!isset($_REQUEST['id'])) {
 				unlink('../assets/uploads/product_photos/'.$photo);
 			}
 
-			// Delete from tbl_photo
+			// Delete from tbl_product
 			$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
@@ -76,10 +76,6 @@ if(!isset($_REQUEST['id'])) {
 
 			// Delete from tbl_product_color
 			$statement = $pdo->prepare("DELETE FROM tbl_product_color WHERE p_id=?");
-			$statement->execute(array($p_ids[$i]));
-
-			// Delete from tbl_rating
-			$statement = $pdo->prepare("DELETE FROM tbl_rating WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
 			// Delete from tbl_payment
