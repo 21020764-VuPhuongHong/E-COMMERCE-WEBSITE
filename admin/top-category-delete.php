@@ -62,7 +62,7 @@ if(!isset($_REQUEST['id'])) {
 				unlink('../assets/uploads/product_photos/'.$photo);
 			}
 
-			// Delete from tbl_photo
+			// Delete from tbl_product
 			$statement = $pdo->prepare("DELETE FROM tbl_product WHERE p_id=?");
 			$statement->execute(array($p_ids[$i]));
 
