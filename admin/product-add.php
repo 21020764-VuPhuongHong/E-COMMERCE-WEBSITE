@@ -327,8 +327,8 @@ if(isset($_POST['form1'])) {
 							<label for="" class="col-sm-3 control-label">Is Active?</label>
 							<div class="col-sm-8">
 								<select name="p_is_active" class="form-control" style="width:auto;">
-									<option value="0">No</option>
 									<option value="1">Yes</option>
+									<option value="0">No</option>
 								</select> 
 							</div>
 						</div>
