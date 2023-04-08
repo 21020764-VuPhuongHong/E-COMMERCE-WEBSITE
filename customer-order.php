@@ -47,7 +47,7 @@ if(!isset($_SESSION['customer'])) {
             /* ===================== Pagination Code Starts ================== */
             $adjacents = 5;
 
-            $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE customer_email=? ORDER BY id DESC");
+            $statement = $pdo->prepare("SELECT customer_email FROM tbl_payment WHERE customer_email=? ORDER BY id DESC");
             $statement->execute(array($_SESSION['customer']['cust_email']));
             $total_pages = $statement->rowCount();
 
@@ -58,9 +58,8 @@ if(!isset($_SESSION['customer'])) {
                 $start = ($page - 1) * $limit;
             else
                 $start = 0;
-            
-            
-            $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE customer_email=? ORDER BY id DESC LIMIT $start, $limit");
+            $statement = $pdo->prepare("SELECT payment_date, txnid , paid_amount, payment_status, payment_method, payment_id
+                                        FROM tbl_payment WHERE customer_email=? ORDER BY id DESC LIMIT $start, $limit");
             $statement->execute(array($_SESSION['customer']['cust_email']));
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
            
@@ -152,7 +151,8 @@ if(!isset($_SESSION['customer'])) {
                                         <td><?php echo $tip; ?></td>
                                         <td>
                                             <?php
-                                            $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+                                            $statement1 = $pdo->prepare("SELECT product_name, size, color, quantity, unit_price
+                                                                        FROM tbl_order WHERE payment_id=?");
                                             $statement1->execute(array($row['payment_id']));
                                             $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                                             foreach ($result1 as $row1) {

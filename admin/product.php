@@ -15,18 +15,20 @@
 			<div class="box box-info">
 				<div class="box-body table-responsive">
 					<table id="example1" class="table table-bordered table-striped">
-						<tr>
-							<th width="30">STT</th>
-							<th>Hình ảnh</th>
-							<th width="200">Tên sản phẩm</th>
-							<th width="60">Giá cũ</th>
-							<th width="60">Giá hiện tại</th>
-							<th width="60">Số lượng</th>
-							<th>Is Featured?</th>
-							<th>Is Active?</th>
-							<th>Loại sản phẩm</th>
-							<th width="80">Thay đổi</th>
-						</tr>
+						<thead>
+							<tr>
+								<th width="30">STT</th>
+								<th>Hình ảnh</th>
+								<th width="200">Tên sản phẩm</th>
+								<th width="60">Giá cũ</th>
+								<th width="60">Giá hiện tại</th>
+								<th width="60">Số lượng</th>
+								<th>Is Featured?</th>
+								<th>Is Active?</th>
+								<th>Loại sản phẩm</th>
+								<th width="80">Thay đổi</th>
+							</tr>
+							</thead>
 						<tbody>
 							<?php
 							$i=0;

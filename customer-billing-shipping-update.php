@@ -7,7 +7,7 @@ if(!isset($_SESSION['customer'])) {
     exit;
 } else {
     // If customer is logged in, but admin make him inactive, then force logout this user.
-    $statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_id=? AND cust_status=?");
+    $statement = $pdo->prepare("SELECT cust_id FROM tbl_customer WHERE cust_id=? AND cust_status=?");
     $statement->execute(array($_SESSION['customer']['cust_id'],0));
     $total = $statement->rowCount();
     if($total) {
@@ -120,7 +120,8 @@ if (isset($_POST['form1'])) {
                                     <label for=""><!--<?php echo LANG_VALUE_106; ?>-->Quốc gia</label>
                                     <select name="cust_b_country" class="form-control">
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
+                                        $statement = $pdo->prepare("SELECT country_id, country_name
+                                                                    FROM tbl_country ORDER BY country_name ASC");
                                         $statement->execute();
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                         foreach ($result as $row) {
@@ -166,7 +167,7 @@ if (isset($_POST['form1'])) {
                                     <label for=""><!--<?php echo LANG_VALUE_106; ?>-->Quốc gia</label>
                                     <select name="cust_s_country" class="form-control">
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
+                                        $statement = $pdo->prepare("SELECT country_id, country_name FROM tbl_country ORDER BY country_name ASC");
                                         $statement->execute();
                                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                         foreach ($result as $row) {

@@ -13,7 +13,7 @@ $success_message1 = '';
 
 // Getting all language variables into array as global variable
 $i=1;
-$statement = $pdo->prepare("SELECT * FROM tbl_language");
+$statement = $pdo->prepare("SELECT lang_value FROM tbl_language");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 foreach ($result as $row) {
@@ -21,7 +21,9 @@ foreach ($result as $row) {
 	$i++;
 }
 
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT logo, favicon, contact_email, contact_phone, 
+									meta_title_home, meta_keyword_home, meta_description_home, before_head, after_body
+							 FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row)
@@ -39,7 +41,7 @@ foreach ($result as $row)
 
 // Checking the order table and removing the pending transaction that are 24 hours+ old. Very important
 $current_date_time = date('Y-m-d H:i:s');
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=?");
+$statement = $pdo->prepare("SELECT payment_date,payment_id , id FROM tbl_payment WHERE payment_status=?");
 $statement->execute(array('Pending'));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 foreach ($result as $row) {
@@ -50,11 +52,11 @@ foreach ($result as $row) {
 	if($time>24) {
 
 		// Return back the stock amount
-		$statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+		$statement1 = $pdo->prepare("SELECT product_id, quantity FROM tbl_order WHERE payment_id=?");
 		$statement1->execute(array($row['payment_id']));
 		$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result1 as $row1) {
-			$statement2 = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+			$statement2 = $pdo->prepare("SELECT p_qty FROM tbl_product WHERE p_id=?");
 			$statement2->execute(array($row1['product_id']));
 			$result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result2 as $row2) {
@@ -104,7 +106,25 @@ foreach ($result as $row) {
 
 	<?php
 
-	$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
+	$statement = $pdo->prepare("SELECT about_meta_title,
+										about_meta_keyword,
+										about_meta_description,
+										faq_meta_title,
+										faq_meta_keyword,
+										faq_meta_description,
+										blog_meta_title,
+										blog_meta_keyword,
+										blog_meta_description,
+										contact_meta_title,
+										pgallery_meta_keyword,
+										contact_meta_description,
+										pgallery_meta_title,
+										pgallery_meta_description,
+										vgallery_meta_title,
+										vgallery_meta_keyword,
+										vgallery_meta_description,
+										contact_meta_keyword
+								FROM tbl_page WHERE id=1");
 	$statement->execute();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 	foreach ($result as $row) {
@@ -161,7 +181,7 @@ foreach ($result as $row) {
 	}
 	if($cur_page == 'product.php')
 	{
-		$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+		$statement = $pdo->prepare("SELECT p_featured_photo, p_name, p_description FROM tbl_product WHERE p_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 		foreach ($result as $row) 
@@ -226,48 +246,14 @@ foreach ($result as $row) {
 		<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
 	<?php endif; ?>
 
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
 
-	<!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script> -->
 
 <?php echo $before_head; ?>
 
-</head>
-<body>
 
-<?php echo $after_body; ?>
-<div class="top">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="left">
-					<ul>
-						<!-- <li><i class="fa fa-phone"></i> <?php echo $contact_phone; ?></li> -->
-						<!-- <li><i class="fa fa-envelope-o"></i> <?php echo $contact_email; ?></li> -->
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="right">
-					<ul>
-						<!-- <?php
-						$statement = $pdo->prepare("SELECT * FROM tbl_social");
-						$statement->execute();
-						$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-						foreach ($result as $row) {
-							?>
-							<?php if($row['social_url'] != ''): ?>
-							<li><a href="<?php echo $row['social_url']; ?>"><i class="<?php echo $row['social_icon']; ?>"></i></a></li>
-							<?php endif; ?>
-							<?php
-						}
-						?> -->
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+
+
 
 
 <div class="header">
@@ -280,7 +266,7 @@ foreach ($result as $row) {
 			<div class="col-md-5 right">
 				<ul>
 					
-					<?php
+					<?php	
 					if(isset($_SESSION['customer'])) {
 						?>
 						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
@@ -324,7 +310,7 @@ foreach ($result as $row) {
 							<li><a href="index.php">Trang chủ</a></li>
 							
 							<?php
-							$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
+							$statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category WHERE show_on_menu=1");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 							foreach ($result as $row) {
@@ -335,7 +321,8 @@ foreach ($result as $row) {
 							?>
 
 							<?php
-							$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
+							$statement = $pdo->prepare("SELECT about_title, faq_title, blog_title, contact_title, pgallery_title, vgallery_title
+														 FROM tbl_page WHERE id=1");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);		
 							foreach ($result as $row) {
@@ -349,9 +336,7 @@ foreach ($result as $row) {
 							?>
 
 							<li><a href="about.php"><?php echo $about_title; ?></a></li>
-							<!-- <li><a href="faq.php"><?php echo $faq_title; ?></a></li>
-
-							<li><a href="contact.php"><?php echo $contact_title; ?></a></li> -->
+							
 						</ul>
 					</div>
 				</div>

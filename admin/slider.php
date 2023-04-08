@@ -15,16 +15,18 @@
 			<div class="box box-info">
 				<div class="box-body table-responsive">
 					<table id="example1" class="table table-bordered table-striped">
-						<tr>
-							<th>STT</th>
-							<th>Hình ảnh</th>
-							<th>Tiêu đề</th>
-							<th>Nội dung</th>
-							<th>Button Text</th>
-							<th>Button URL</th>
-							<th>Position</th>
-							<th width="140">Action</th>
-						</tr>
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Hình ảnh</th>
+								<th>Tiêu đề</th>
+								<th>Nội dung</th>
+								<th>Button Text</th>
+								<th>Button URL</th>
+								<th>Position</th>
+								<th width="140">Action</th>
+							</tr>
+						</thead>
 						<tbody>
 							<?php
 							$i=0;
@@ -74,16 +76,12 @@
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-            </div>
             <div class="modal-body">
-                <p>Are you sure want to delete this item?</p>
+                <p>Bạn có chắc chắn muốn xóa mục này?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

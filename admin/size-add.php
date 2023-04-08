@@ -9,7 +9,7 @@ if(isset($_POST['form1'])) {
         $error_message .= "Size Name can not be empty<br>";
     } else {
     	// Duplicate Category checking
-    	$statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_name=?");
+    	$statement = $pdo->prepare("SELECT size_name FROM tbl_size WHERE size_name=?");
     	$statement->execute(array($_POST['size_name']));
     	$total = $statement->rowCount();
     	if($total)

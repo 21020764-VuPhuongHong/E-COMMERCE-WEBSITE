@@ -97,14 +97,14 @@ foreach ($result as $row)
     <div class="container">
         <div class="row">
             <?php
-                $statement = $pdo->prepare("SELECT * FROM tbl_service");
+                $statement = $pdo->prepare("SELECT photo, title, content FROM tbl_service");
                 $statement->execute();
                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                 foreach ($result as $row) {
                     ?>
                     <div class="col-md-4">
                         <div class="item">
-                            <div class="photo"><img src="assets/uploads/<?php echo $row['photo']; ?>" alt="<?php echo $row['title']; ?>"></div>
+                            <div class="photo" ><img src="assets/uploads/<?php echo $row['photo']; ?>" alt="<?php echo $row['title']; ?>"></div>
                             <h3><?php echo $row['title']; ?></h3>
                             <p>
                                 <?php echo nl2br($row['content']); ?>
@@ -136,7 +136,7 @@ foreach ($result as $row)
                 <div class="product-carousel">
                     
                     <?php
-                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_featured=? AND p_is_active=? LIMIT ".$total_featured_product_home);
+                    $statement = $pdo->prepare("SELECT p_featured_photo, p_id , p_name , p_current_price, p_old_price, p_qty FROM tbl_product WHERE p_is_featured=? AND p_is_active=? LIMIT ".$total_featured_product_home);
                     $statement->execute(array(1,1));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
@@ -159,7 +159,7 @@ foreach ($result as $row)
                                 <div class="rating">
                                     <?php
                                     $t_rating = 0;
-                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                    $statement1 = $pdo->prepare("SELECT p_id FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
                                     $tot_rating = $statement1->rowCount();
                                     if($tot_rating == 0) {
@@ -265,7 +265,7 @@ foreach ($result as $row)
                 <div class="product-carousel">
 
                     <?php
-                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? ORDER BY p_id DESC LIMIT ".$total_latest_product_home);
+                    $statement = $pdo->prepare("SELECT p_featured_photo, p_id, p_name, p_current_price, p_old_price, p_qty FROM tbl_product WHERE p_is_active=? ORDER BY p_id DESC LIMIT ".$total_latest_product_home);
                     $statement->execute(array(1));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
@@ -288,7 +288,7 @@ foreach ($result as $row)
                                 <div class="rating">
                                     <?php
                                     $t_rating = 0;
-                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                    $statement1 = $pdo->prepare("SELECT rating  FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
                                     $tot_rating = $statement1->rowCount();
                                     if($tot_rating == 0) {
@@ -396,7 +396,7 @@ foreach ($result as $row)
                 <div class="product-carousel">
 
                     <?php
-                    $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_is_active=? ORDER BY p_total_view DESC LIMIT ".$total_popular_product_home);
+                    $statement = $pdo->prepare("SELECT p_featured_photo, p_id, p_name, p_current_price, p_old_price, p_qty FROM tbl_product WHERE p_is_active=? ORDER BY p_total_view DESC LIMIT ".$total_popular_product_home);
                     $statement->execute(array(1));
                     $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
                     foreach ($result as $row) {
@@ -419,7 +419,7 @@ foreach ($result as $row)
                                 <div class="rating">
                                     <?php
                                     $t_rating = 0;
-                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                    $statement1 = $pdo->prepare("SELECT rating FROM tbl_rating WHERE p_id=?");
                                     $statement1->execute(array($row['p_id']));
                                     $tot_rating = $statement1->rowCount();
                                     if($tot_rating == 0) {

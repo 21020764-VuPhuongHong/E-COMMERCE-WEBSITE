@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT banner_product_category FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {
@@ -20,7 +20,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         exit;
     } else {
 
-        $statement = $pdo->prepare("SELECT * FROM tbl_top_category");
+        $statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
@@ -71,7 +71,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                         <?php
                         // Checking if any product is available or not
                         $prod_count = 0;
-                        $statement = $pdo->prepare("SELECT * FROM tbl_product");
+                        $statement = $pdo->prepare("SELECT tcat_id FROM tbl_product");
                         $statement->execute();
                         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                         foreach ($result as $row) {
@@ -88,7 +88,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                             echo '<div class="pl_15">'.LANG_VALUE_153.'</div>';
                         } else {
                             for($ii=0;$ii<count($final_tcat_ids);$ii++) {
-                                $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE tcat_id=? AND p_is_active=?");
+                                $statement = $pdo->prepare("SELECT p_featured_photo, p_id, p_name, p_current_price, p_old_price, p_qty  FROM tbl_product WHERE tcat_id=? AND p_is_active=?");
                                 $statement->execute(array($final_tcat_ids[$ii],1));
                                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($result as $row) {
@@ -112,7 +112,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
                                                 <div class="rating">
                                                     <?php
                                                     $t_rating = 0;
-                                                    $statement1 = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=?");
+                                                    $statement1 = $pdo->prepare("SELECT rating FROM tbl_rating WHERE p_id=?");
                                                     $statement1->execute(array($row['p_id']));
                                                     $tot_rating = $statement1->rowCount();
                                                     if($tot_rating == 0) {

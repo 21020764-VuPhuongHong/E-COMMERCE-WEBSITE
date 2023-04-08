@@ -21,14 +21,14 @@ if(isset($_POST['form1'])) {
 		        $error_message .= 'Email address must be valid<br>';
 		    } else {
 		    	// current email address that is in the database
-		    	$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE id=?");
+		    	$statement = $pdo->prepare("SELECT email FROM tbl_user WHERE id=?");
 				$statement->execute(array($_SESSION['user']['id']));
 				$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 				foreach($result as $row) {
 					$current_email = $row['email'];
 				}
 
-		    	$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? and email!=?");
+		    	$statement = $pdo->prepare("SELECT email FROM tbl_user WHERE email=? and email!=?");
 		    	$statement->execute(array($_POST['email'],$current_email));
 		    	$total = $statement->rowCount();							
 		    	if($total) {
@@ -133,7 +133,7 @@ if(isset($_POST['form3'])) {
 </section>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE id=?");
+$statement = $pdo->prepare("SELECT full_name,email, phone, photo, status, role  FROM tbl_user WHERE id=?");
 $statement->execute(array($_SESSION['user']['id']));
 $statement->rowCount();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);							

@@ -1,5 +1,15 @@
+<?php require_once('header.php'); ?>
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT footer_about,
+									contact_email,
+									contact_phone,
+									contact_address,
+									footer_copyright,
+									total_recent_post_footer,
+									total_popular_post_footer,
+									newsletter_on_off,
+									before_body
+							FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row)
@@ -12,7 +22,6 @@ foreach ($result as $row)
 	$total_recent_post_footer = $row['total_recent_post_footer'];
     $total_popular_post_footer = $row['total_popular_post_footer'];
     $newsletter_on_off = $row['newsletter_on_off'];
-    // $before_body = $row['before_body'];
 }
 ?>
 
@@ -41,7 +50,7 @@ foreach ($result as $row)
 				    }
 				    else
 				    {
-				    	$statement = $pdo->prepare("SELECT * FROM tbl_subscriber WHERE subs_email=?");
+				    	$statement = $pdo->prepare("SELECT subs_email FROM tbl_subscriber WHERE subs_email=?");
 				    	$statement->execute(array($_POST['email_subscribe']));
 				    	$total = $statement->rowCount();							
 				    	if($total)
@@ -136,7 +145,7 @@ This link will be active only for 24 hours.
 </a>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
+$statement = $pdo->prepare("SELECT stripe_public_key, stripe_secret_key  FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
 foreach ($result as $row) {

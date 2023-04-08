@@ -12,19 +12,21 @@
 			<div class="box box-info">
 				<div class="box-body table-responsive">
 					<table id="example1" class="table table-bordered table-striped">
-						<tr>
-							<th width="30">STT</th>
-							<th width="180">Họ tên</th>
-							<th width="180">Email</th>
-							<th width="180">Địa chỉ</th>
-							<th>Trạng thái</th>
-							<th width="100">Thay đổi trạng thái</th>
-							<th width="100">Thay đổi</th>
-						</tr>
+						<thead>
+							<tr>
+								<th width="30">STT</th>
+								<th width="180">Họ tên</th>
+								<th width="180">Email</th>
+								<th width="180">Địa chỉ</th>
+								<th>Trạng thái</th>
+								<th width="100">Thay đổi trạng thái</th>
+								<th width="100">Thay đổi</th>
+							</tr>
+						</thead>
 						<tbody>
 							<?php
 							$i=0;
-							$statement = $pdo->prepare("SELECT * 
+							$statement = $pdo->prepare("SELECT cust_status, cust_name, cust_email, country_name, cust_city, cust_state,cust_id
 														FROM tbl_customer t1
 														JOIN tbl_country t2
 														ON t1.cust_country = t2.country_id

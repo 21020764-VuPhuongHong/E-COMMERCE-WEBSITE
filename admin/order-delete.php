@@ -6,7 +6,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE id=?");
+	$statement = $pdo->prepare("SELECT payment_id, payment_status , shipping_status FROM tbl_payment WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	if( $total == 0 ) {
@@ -29,11 +29,11 @@ if(!isset($_REQUEST['id'])) {
 		// No return to stock
 	else:
 		// Return the stock
-		$statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+		$statement = $pdo->prepare("SELECT product_id, quantity FROM tbl_order WHERE payment_id=?");
 		$statement->execute(array($payment_id));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
 		foreach ($result as $row) {
-			$statement1 = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+			$statement1 = $pdo->prepare("SELECT p_qty FROM tbl_product WHERE p_id=?");
 			$statement1->execute(array($row['product_id']));
 			$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);							
 			foreach ($result1 as $row1) {

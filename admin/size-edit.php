@@ -10,14 +10,14 @@ if(isset($_POST['form1'])) {
     } else {
 		// Duplicate Size checking
     	// current size name that is in the database
-    	$statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
+    	$statement = $pdo->prepare("SELECT size_name FROM tbl_size WHERE size_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach($result as $row) {
 			$current_size_name = $row['size_name'];
 		}
 
-		$statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_name=? and size_name!=?");
+		$statement = $pdo->prepare("SELECT size_name FROM tbl_size WHERE size_name=? and size_name!=?");
     	$statement->execute(array($_POST['size_name'],$current_size_name));
     	$total = $statement->rowCount();							
     	if($total) {
@@ -42,7 +42,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
+	$statement = $pdo->prepare("SELECT size_name FROM tbl_size WHERE size_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
