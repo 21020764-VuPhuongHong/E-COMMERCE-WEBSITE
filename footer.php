@@ -71,7 +71,7 @@ foreach ($result as $row)
 				    		$current_date_time = date('Y-m-d H:i:s');
 
 				    		// Inserting data into the database
-				    		$statement = $pdo->prepare("INSERT INTO tbl_subscriber (subs_email,subs_date,subs_date_time,subs_hash,subs_active) VALUES (?,?,?,?,?)");
+				    		$statement = $pdo->prepare("set foreign_key_checks=0; INSERT INTO tbl_subscriber (subs_email,subs_date,subs_date_time,subs_hash,subs_active) VALUES (?,?,?,?,?)");
 				    		$statement->execute(array($_POST['email_subscribe'],$current_date,$current_date_time,$key,0));
 
 				    		// Sending Confirmation Email

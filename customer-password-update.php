@@ -40,7 +40,7 @@ if (isset($_POST['form1'])) {
 
         $password = strip_tags($_POST['cust_password']);
         
-        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_password=? WHERE cust_id=?");
+        $statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_customer SET cust_password=? WHERE cust_id=?");
         $statement->execute(array(md5($password),$_SESSION['customer']['cust_id']));
         
         $_SESSION['customer']['cust_password'] = md5($password);        
