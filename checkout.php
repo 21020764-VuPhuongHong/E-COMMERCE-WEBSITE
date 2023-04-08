@@ -19,7 +19,7 @@ foreach ($result as $row) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_22; ?></h1>
+        <h1>Thanh toán</h1>
     </div>
 </div>
 
@@ -34,18 +34,18 @@ foreach ($result as $row) {
                     </p>
                 <?php else: ?>
 
-                <h3 class="special"><?php echo LANG_VALUE_26; ?></h3>
+                <h3 class="special">Thông tin đặt hàng</h3>
                 <div class="cart">
                     <table class="table table-responsive">
                         <tr>
-                            <th><?php echo LANG_VALUE_7; ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
+                            <th><!--<?php echo LANG_VALUE_7; ?>-->STT</th>
+                            <th><!--<?php echo LANG_VALUE_8; ?>-->Hình ảnh</th>
+                            <th><!--<?php echo LANG_VALUE_47; ?>-->Tên sản phẩm</th>
+                            <th><!--<?php echo LANG_VALUE_157; ?>-->Kích cỡ</th>
+                            <th><!--<?php echo LANG_VALUE_158; ?>-->Màu sắc</th>
+                            <th><!--<?php echo LANG_VALUE_159; ?>-->Giá</th>
+                            <th><!--<?php echo LANG_VALUE_55; ?>-->Số lượng</th>
+                            <th class="text-right"><!--<?php echo LANG_VALUE_82; ?>-->Tổng</th>
                         </tr>
                         <tbody>
 							<?php
