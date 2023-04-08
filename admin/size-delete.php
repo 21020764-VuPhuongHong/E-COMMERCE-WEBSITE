@@ -20,7 +20,7 @@ if(!isset($_REQUEST['id'])) {
 <?php
 
 	// Delete from tbl_size
-	$statement = $pdo->prepare("DELETE FROM tbl_size WHERE size_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0;DELETE FROM tbl_size WHERE size_id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: size.php');

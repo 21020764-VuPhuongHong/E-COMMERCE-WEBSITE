@@ -44,7 +44,7 @@ if(isset($_POST['form1'])) {
         move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
 	
-		$statement = $pdo->prepare("INSERT INTO tbl_service (title,content,photo) VALUES (?,?,?)");
+		$statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_service (title,content,photo) VALUES (?,?,?)");
 		$statement->execute(array($_POST['title'],$_POST['content'],$final_name));
 			
 		$success_message = 'Service is added successfully!';

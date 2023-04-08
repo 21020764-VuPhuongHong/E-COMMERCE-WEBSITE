@@ -40,17 +40,18 @@ if(!isset($_REQUEST['id'])) {
 				$p_qty = $row1['p_qty'];
 			}
 			$final = $p_qty + $row['quantity'];
-			$statement1 = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+			$statement1 = $pdo->prepare("set foreign_key_checks=0;
+										UPDATE tbl_product SET p_qty=? WHERE p_id=?");
 			$statement1->execute(array($final,$row['product_id']));
 		}	
 	endif;	
 
 	// Delete from tbl_order
-	$statement = $pdo->prepare("DELETE FROM tbl_order WHERE payment_id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0; DELETE FROM tbl_order WHERE payment_id=?");
 	$statement->execute(array($payment_id));
 
 	// Delete from tbl_payment
-	$statement = $pdo->prepare("DELETE FROM tbl_payment WHERE id=?");
+	$statement = $pdo->prepare("set foreign_key_checks=0; DELETE FROM tbl_payment WHERE id=?");
 	$statement->execute(array($_REQUEST['id']));
 
 	header('location: order.php');

@@ -22,7 +22,7 @@ if(isset($_POST['form1'])) {
     if($valid == 1) {
 
 		// Saving data into the main table tbl_top_category
-		$statement = $pdo->prepare("INSERT INTO tbl_top_category (tcat_name,show_on_menu) VALUES (?,?)");
+		$statement = $pdo->prepare("set foreign_key_checks=0;INSERT INTO tbl_top_category (tcat_name,show_on_menu) VALUES (?,?)");
 		$statement->execute(array($_POST['tcat_name'],$_POST['show_on_menu']));
 	
     	$success_message = 'Top Category is added successfully.';

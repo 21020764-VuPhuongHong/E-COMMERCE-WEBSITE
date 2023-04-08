@@ -18,7 +18,7 @@ if(isset($_POST['form_about'])) {
 
     if($valid == 1) {
         // updating the database
-        $statement = $pdo->prepare("UPDATE tbl_page SET about_title=?,about_content=? WHERE id=1");
+        $statement = $pdo->prepare("set foreign_key_checks=0; UPDATE tbl_page SET about_title=?,about_content=? WHERE id=1");
         $statement->execute(array($_POST['about_title'],$_POST['about_content']));
         $success_message = 'Thông tin về Trang được cập nhật thành công.'; 
     }

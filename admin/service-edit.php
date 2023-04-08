@@ -30,7 +30,7 @@ if(isset($_POST['form1'])) {
 	if($valid == 1) {
 
 		if($path == '') {
-			$statement = $pdo->prepare("UPDATE tbl_service SET title=?, content=? WHERE id=?");
+			$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_service SET title=?, content=? WHERE id=?");
     		$statement->execute(array($_POST['title'],$_POST['content'],$_REQUEST['id']));
 		} else {
 
@@ -39,7 +39,7 @@ if(isset($_POST['form1'])) {
 			$final_name = 'service-'.$_REQUEST['id'].'.'.$ext;
         	move_uploaded_file( $path_tmp, '../assets/uploads/'.$final_name );
 
-        	$statement = $pdo->prepare("UPDATE tbl_service SET title=?, content=?, photo=? WHERE id=?");
+        	$statement = $pdo->prepare("set foreign_key_checks=0;UPDATE tbl_service SET title=?, content=?, photo=? WHERE id=?");
     		$statement->execute(array($_POST['title'],$_POST['content'],$final_name,$_REQUEST['id']));
 		}	   
 
