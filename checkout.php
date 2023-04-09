@@ -89,7 +89,7 @@ foreach ($result as $row) {
 							?>							
 						</tbody>          
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
+                            <th colspan="7" class="total-text">Thanh toán</th>
                             <th class="total-amount"><?php echo $table_total_price; ?>đ</th>
                         </tr>
                         <?php
@@ -111,11 +111,11 @@ foreach ($result as $row) {
                         }                        
                         ?>
                         <tr>
-                            <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
+                            <td colspan="7" class="total-text">Phí ship</td>
                             <td class="total-amount"><?php echo $shipping_cost; ?>đ</td>
                         </tr>
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
+                            <th colspan="7" class="total-text">Thành tiền</th>
                             <th class="total-amount">
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
