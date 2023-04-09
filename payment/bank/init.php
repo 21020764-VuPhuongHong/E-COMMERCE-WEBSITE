@@ -50,9 +50,9 @@ if( !isset($_REQUEST['msg']) ) {
 	                            '', 
 	                            '',
 	                            $_POST['transaction_info'],
-	                            'Bank Deposit',
-	                            'Pending',
-	                            'Pending',
+	                            'Chuyển khoản',
+	                            'Chưa giải quyết',
+	                            'Chưa giải quyết',
 	                            $payment_id
 	                        ));
 
