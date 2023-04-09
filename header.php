@@ -269,16 +269,16 @@ foreach ($result as $row) {
 					<?php	
 					if(isset($_SESSION['customer'])) {
 						?>
-						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
+						<li><i class="fa fa-user"></i> Đăng nhập bằng <?php echo $_SESSION['customer']['cust_name']; ?></li>
 						
-						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
+						<li><a href="dashboard.php"><i class="fa fa-home"></i> Nhà của tôi</a></li>
 						
-						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_19; ?> </a></li>
+						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Xem giỏ hàng </a></li>
 						<?php
 					} else {
 						?>
-						<li><a href="login.php"><i class="fa fa-sign-in"></i> <?php echo LANG_VALUE_9; ?></a></li>
-						<li><a href="registration.php"><i class="fa fa-user-plus"></i> <?php echo LANG_VALUE_15; ?></a></li>
+						<li><a href="login.php"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
+						<li><a href="registration.php"><i class="fa fa-user-plus"></i> Đăng ký</a></li>
 						<?php	
 					}
 					?>
