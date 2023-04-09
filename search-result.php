@@ -52,7 +52,7 @@ foreach ($result as $row) {
             $statement->execute(array(1,$search_text));
             $total_pages = $statement->rowCount();
 
-            $targetpage = BASE_URL.'search-result.php?search_text='.$_REQUEST['search_text'];   //your file name  (the name of this file)
+            $targetpage = 'search-result.php?search_text='.$_REQUEST['search_text'];   //your file name  (the name of this file)
             $limit = 12;                                 //how many items to show per page
             $page = @$_GET['page'];
             if($page) 
