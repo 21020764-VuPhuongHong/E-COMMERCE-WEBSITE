@@ -419,38 +419,38 @@ foreach ($result as $row) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Features</label>
+							<label for="" class="col-sm-3 control-label">Đặc điểm</label>
 							<div class="col-sm-8">
 								<textarea name="p_feature" class="form-control" cols="30" rows="10" id="editor3"><?php echo $p_feature; ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Conditions</label>
+							<label for="" class="col-sm-3 control-label">Điều kiện</label>
 							<div class="col-sm-8">
 								<textarea name="p_condition" class="form-control" cols="30" rows="10" id="editor4"><?php echo $p_condition; ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Return Policy</label>
+							<label for="" class="col-sm-3 control-label">Chính sách đổi trả</label>
 							<div class="col-sm-8">
 								<textarea name="p_return_policy" class="form-control" cols="30" rows="10" id="editor5"><?php echo $p_return_policy; ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Is Featured?</label>
+							<label for="" class="col-sm-3 control-label">Sản phẩm nổi bật</label>
 							<div class="col-sm-8">
 								<select name="p_is_featured" class="form-control" style="width:auto;">
-									<option value="0" <?php if($p_is_featured == '0'){echo 'selected';} ?>>No</option>
-									<option value="1" <?php if($p_is_featured == '1'){echo 'selected';} ?>>Yes</option>
+									<option value="0" <?php if($p_is_featured == '0'){echo 'selected';} ?>>Không</option>
+									<option value="1" <?php if($p_is_featured == '1'){echo 'selected';} ?>>Có</option>
 								</select> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Is Active?</label>
+							<label for="" class="col-sm-3 control-label">Hoạt động</label>
 							<div class="col-sm-8">
 								<select name="p_is_active" class="form-control" style="width:auto;">
-									<option value="0" <?php if($p_is_active == '0'){echo 'selected';} ?>>No</option>
-									<option value="1" <?php if($p_is_active == '1'){echo 'selected';} ?>>Yes</option>
+									<option value="0" <?php if($p_is_active == '0'){echo 'selected';} ?>>Không</option>
+									<option value="1" <?php if($p_is_active == '1'){echo 'selected';} ?>>Có</option>
 								</select> 
 							</div>
 						</div>

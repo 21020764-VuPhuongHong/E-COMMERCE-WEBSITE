@@ -90,7 +90,7 @@ foreach ($result as $row) {
 						</tbody>          
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount"><?php echo $table_total_price; ?>đ</th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT amount FROM tbl_shipping_cost WHERE country_id=?");
@@ -112,7 +112,7 @@ foreach ($result as $row) {
                         ?>
                         <tr>
                             <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
-                            <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td>
+                            <td class="total-amount"><?php echo $shipping_cost; ?>đ</td>
                         </tr>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
@@ -120,7 +120,7 @@ foreach ($result as $row) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $final_total; ?>
+                                <?php echo $final_total; ?>đ
                             </th>
                         </tr>
                     </table> 

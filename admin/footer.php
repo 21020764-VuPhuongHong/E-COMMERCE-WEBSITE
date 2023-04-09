@@ -1,6 +1,3 @@
-		</div>
-
-	</div>
 
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -119,15 +116,43 @@
 
 
 
-	    $("#example1").DataTable();
-	    $('#example2').DataTable({
-	      "paging": true,
-	      "lengthChange": false,
-	      "searching": false,
-	      "ordering": true,
-	      "info": true,
-	      "autoWidth": false
-	    });
+	    
+		$(document).ready(function() {
+			var lang = {
+				"emptyTable": "Không có dữ liệu nào trong bảng",
+				"info": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+				"infoEmpty": "Hiển thị 0 đến 0 của 0 bản ghi",
+				"infoFiltered": "(được lọc từ _MAX_ tổng số bản ghi)",
+				"lengthMenu": "Hiển thị _MENU_ bản ghi",
+				"loadingRecords": "Đang tải...",
+				"processing": "Đang xử lý...",
+				"search": "Tìm kiếm:",
+				"zeroRecords": "Không tìm thấy kết quả phù hợp",
+				"paginate": {
+					"first": "Đầu",
+					"last": "Cuối",
+					"next": "Tiếp",
+					"previous": "Trước"
+				},
+				"aria": {
+					"sortAscending": ": sắp xếp cột tăng dần",
+					"sortDescending": ": sắp xếp cột giảm dần"
+				}
+			};
+			$('#example1').DataTable({
+				"language": lang
+			});
+			$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
+			});
+		});
+
+	    
 
 	    $('#confirm-delete').on('show.bs.modal', function(e) {
 	      $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));

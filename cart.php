@@ -85,7 +85,7 @@ foreach ($result as $row) {
                         
                         <tr>
                             <th colspan="7" class="total-text">Tổng</th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount"><?php echo $table_total_price; ?>đ</th>
                             <th></th>
                         </tr>
                     </table> 

@@ -10,7 +10,7 @@ if(isset($_POST['form1'])) {
     } else {
 		// Duplicate Top Category checking
     	// current Top Category name that is in the database
-    	$statement = $pdo->prepare("SELECT id FROM tbl_top_category WHERE tcat_id=?");
+    	$statement = $pdo->prepare("SELECT tcat_id, tcat_name FROM tbl_top_category WHERE tcat_id=?");
 		$statement->execute(array($_REQUEST['id']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		foreach($result as $row) {
@@ -42,7 +42,7 @@ if(!isset($_REQUEST['id'])) {
 	exit;
 } else {
 	// Check the id is valid or not
-	$statement = $pdo->prepare("SELECT id FROM tbl_top_category WHERE tcat_id=?");
+	$statement = $pdo->prepare("SELECT tcat_id, tcat_name, show_on_menu FROM tbl_top_category WHERE tcat_id=?");
 	$statement->execute(array($_REQUEST['id']));
 	$total = $statement->rowCount();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);

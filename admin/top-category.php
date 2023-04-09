@@ -31,7 +31,7 @@
             <tbody>
             	<?php
             	$i=0;
-            	$statement = $pdo->prepare("SELECT * FROM tbl_top_category ORDER BY tcat_id DESC");
+            	$statement = $pdo->prepare("SELECT tcat_id, tcat_name, show_on_menu FROM tbl_top_category ORDER BY tcat_id DESC");
             	$statement->execute();
             	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
             	foreach ($result as $row) {
@@ -43,9 +43,9 @@
                         <td>
                             <?php 
                                 if($row['show_on_menu'] == 1) {
-                                    echo 'Yes';
+                                    echo 'Có';
                                 } else {
-                                    echo 'No';
+                                    echo 'Không';
                                 }
                             ?>
                         </td>

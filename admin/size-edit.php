@@ -55,7 +55,7 @@ if(!isset($_REQUEST['id'])) {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Edit Size</h1>
+		<h1>Sửa Size</h1>
 	</div>
 	<div class="content-header-right">
 		<a href="size.php" class="btn btn-primary btn-sm">Quay lại</a>
@@ -124,16 +124,12 @@ foreach ($result as $row) {
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-            </div>
             <div class="modal-body">
-                Are you sure want to delete this item?
+				Bạn có chắc chắn muốn xóa mục này?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
             </div>
         </div>
     </div>

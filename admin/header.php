@@ -22,7 +22,7 @@ if(!isset($_SESSION['user'])) {
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Admin Panel</title>
+	<title>Admin</title>
 
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -49,7 +49,7 @@ if(!isset($_SESSION['user'])) {
 		<header class="main-header">
 
 			<a href="index.php" class="logo">
-				<span class="logo-lg">VQNHHfashionshop</span>
+				<span class="logo-lg">FASHIONYS.COM</span>
 			</a>
 
 			<nav class="navbar navbar-static-top">
