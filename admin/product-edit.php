@@ -299,19 +299,19 @@ foreach ($result as $row) {
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Giá cũ<br><span style="font-size:10px;font-weight:normal;">(VNĐ)</span></label>
 							<div class="col-sm-4">
-								<input type="text" name="p_old_price" class="form-control" value="<?php echo $p_old_price; ?>">
+								<input type="number" name="p_old_price" min = "1000" max = "1000000" class="form-control" value="<?php echo $p_old_price; ?>">
 							</div>
 						</div>	
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Giá mới <span>*</span><br><span style="font-size:10px;font-weight:normal;">(VNĐ)</span></label>
 							<div class="col-sm-4">
-								<input type="text" name="p_current_price" class="form-control" value="<?php echo $p_current_price; ?>">
+								<input type="number" name="p_current_price" min = "1000" max = "1000000" class="form-control" value="<?php echo $p_current_price; ?>">
 							</div>
 						</div>	
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Số lượng <span>*</span></label>
 							<div class="col-sm-4">
-								<input type="text" name="p_qty" class="form-control" value="<?php echo $p_qty; ?>">
+								<input type="number" name="p_qty" min = "1" max = "100" class="form-control" value="<?php echo $p_qty; ?>">
 							</div>
 						</div>
 						<div class="form-group">
