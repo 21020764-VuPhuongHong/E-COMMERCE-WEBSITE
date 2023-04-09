@@ -23,8 +23,8 @@
 								<th width="60">Giá cũ</th>
 								<th width="60">Giá hiện tại</th>
 								<th width="60">Số lượng</th>
-								<th>Is Featured?</th>
-								<th>Is Active?</th>
+								<th>Nổi bật</th>
+								<th>Hoạt động</th>
 								<th>Loại sản phẩm</th>
 								<th width="80">Thay đổi</th>
 							</tr>
@@ -65,10 +65,10 @@
 									<td><?php echo $row['p_current_price']; ?></td>
 									<td><?php echo $row['p_qty']; ?></td>
 									<td>
-										<?php if($row['p_is_featured'] == 1) {echo 'Yes';} else {echo 'No';} ?>
+										<?php if($row['p_is_featured'] == 1) {echo 'Có';} else {echo 'Không';} ?>
 									</td>
 									<td>
-										<?php if($row['p_is_active'] == 1) {echo 'Yes';} else {echo 'No';} ?>
+										<?php if($row['p_is_active'] == 1) {echo 'Có';} else {echo 'Không';} ?>
 									</td>
 									<td><?php echo $row['tcat_name']; ?></td>
 									<td>										
