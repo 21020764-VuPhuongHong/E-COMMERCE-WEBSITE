@@ -277,17 +277,17 @@ foreach ($result as $row) {
 	                            <div class="row">
 
 	                                <div class="col-md-12 form-group">
-	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
+	                                    <label for="">Lựa chọn phương thức thanh toán *</label>
 	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
-	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-	                                        <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
+	                                        <option value="">Lựa chọn một phương thức</option>
+	                                        <option value="Bank Deposit">Qua tài khoản ngân hàng</option>
 	                                    </select>
 	                                </div>
 
                                     <form action="payment/bank/init.php" method="post" id="bank_form">
                                         <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_43; ?></span></label><br>
+                                            <label for="">Thông tin chuyển khoản</span></label><br>
                                             <?php
                                             $statement = $pdo->prepare("SELECT bank_detail FROM tbl_settings WHERE id=1");
                                             $statement->execute();
@@ -298,11 +298,11 @@ foreach ($result as $row) {
                                             ?>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
+                                            <label for="">Thông tin giao dịch <br><span style="font-size:12px;font-weight:normal;">(Bao gồm mã giao dịch và những thông tin khác)</span></label>
                                             <textarea name="transaction_info" class="form-control" cols="30" rows="10"></textarea>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form3">
+                                            <input type="submit" class="btn btn-primary" value="Thanh toán ngay" name="form3">
                                         </div>
                                     </form>
 	                                

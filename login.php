@@ -51,7 +51,7 @@ if(isset($_POST['form1'])) {
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_login; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_10; ?></h1>
+        <h1>Đăng nhập dành cho khách hàng</h1>
     </div>
 </div>
 
@@ -76,16 +76,16 @@ if(isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for="">Địa chỉ Email *</label>
                                     <input type="email" class="form-control" name="cust_email">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for="">Mật khẩu *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_4; ?>" name="form1">
+                                    <input type="submit" class="btn btn-primary" value="Đăng nhập" name="form1">
                                 </div>
                                 <!-- <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?></a> -->
                             </div>
