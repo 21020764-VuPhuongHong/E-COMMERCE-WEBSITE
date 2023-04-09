@@ -152,7 +152,7 @@ foreach ($result as $row) {
 	
 	if($cur_page == 'index.php' || $cur_page == 'login.php' || $cur_page == 'registration.php' || $cur_page == 'cart.php' || $cur_page == 'checkout.php' || $cur_page == 'forget-password.php' || $cur_page == 'reset-password.php' || $cur_page == 'product-category.php' || $cur_page == 'product.php') {
 		?>
-		<title><?php echo $meta_title_home; ?></title>
+		<title>N10Shop Online</title>
 		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
 		<meta name="description" content="<?php echo $meta_description_home; ?>">
 		<?php
