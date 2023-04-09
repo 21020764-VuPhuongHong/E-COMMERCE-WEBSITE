@@ -49,7 +49,7 @@ if(!isset($_SESSION['user'])) {
 		<header class="main-header">
 
 			<a href="index.php" class="logo">
-				<span class="logo-lg">FASHIONYS.COM</span>
+				<span class="logo-lg">N10Shop</span>
 			</a>
 
 			<nav class="navbar navbar-static-top">

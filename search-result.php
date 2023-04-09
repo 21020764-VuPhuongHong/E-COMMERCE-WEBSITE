@@ -52,7 +52,7 @@ foreach ($result as $row) {
             $statement->execute(array(1,$search_text));
             $total_pages = $statement->rowCount();
 
-            $targetpage = BASE_URL.'search-result.php?search_text='.$_REQUEST['search_text'];   //your file name  (the name of this file)
+            $targetpage = 'search-result.php?search_text='.$_REQUEST['search_text'];   //your file name  (the name of this file)
             $limit = 12;                                 //how many items to show per page
             $page = @$_GET['page'];
             if($page) 
@@ -159,10 +159,10 @@ foreach ($result as $row) {
                                         <div class="text">
                                             <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
                                             <h4>
-                                                $<?php echo $row['p_current_price']; ?> 
+                                                <?php echo $row['p_current_price']; ?>đ
                                                 <?php if($row['p_old_price'] != ''): ?>
                                                 <del>
-                                                    $<?php echo $row['p_old_price']; ?>
+                                                    <?php echo $row['p_old_price']; ?>đ
                                                 </del>
                                                 <?php endif; ?>
                                             </h4>
