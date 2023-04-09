@@ -346,8 +346,8 @@ if($success_message1 != '') {
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo LANG_VALUE_155; ?></h2>
-                    <h3><?php echo LANG_VALUE_156; ?></h3>
+                    <h2>Sản phẩm tương tự</h2>
+                    <h3>Xem các sản phẩm tương tự dưới đây</h3>
                 </div>
             </div>
         </div>
@@ -378,7 +378,7 @@ if($success_message1 != '') {
                                     </del>
                                     <?php endif; ?>
                                 </h4>
-                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo LANG_VALUE_154; ?></a></p>
+                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><!--<?php echo LANG_VALUE_154; ?>-->Thêm vào giỏ hàng</a></p>
                             </div>
                         </div>
                         <?php
